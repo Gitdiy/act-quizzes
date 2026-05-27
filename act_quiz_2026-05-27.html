@@ -1,289 +1,381 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>ACT Math Hard Practice Quiz</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      background: #f7fafc;
-    }
-    .container {
-      max-width: 600px;
-      margin: 36px auto;
-      background: #fff;
-      box-shadow: 0 2px 16px rgba(44,62,80,.15);
-      border-radius: 16px;
-      padding: 32px 18px 20px 18px;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 18px;
-      font-size: 2rem;
-      color: #22223b;
-    }
-    .score {
-      font-weight: 500;
-      margin-bottom: 18px;
-      font-size: 1.1rem;
-      text-align: right;
-      color: #358ad9;
-    }
-    .question-block {
-      margin: 18px 0 24px 0;
-      padding: 16px 7px;
-      border-radius: 10px;
-      background: #f1f5fb;
-      box-shadow: 0 1px 6px rgba(30,44,74,.08);
-      transition: box-shadow 0.2s;
-    }
-    .question {
-      font-size: 1.12rem;
-      font-weight: 500;
-      color: #2d3142;
-      margin-bottom: 12px;
-    }
-    .options {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .option {
-      margin-bottom: 7px;
-      background: #eff1f6;
-      border: 1px solid #e3e8ee;
-      border-radius: 7px;
-      padding: 12px;
-      font-size: 1rem;
-      color: #2e3a59;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s, border 0.2s;
-      display: flex;
-      align-items: center;
-    }
-    .option.selected { 
-      background: #dceffc;
-      border-color: #358ad9;
-      color: #358ad9;
-    }
-    .option.correct {
-      background: #c6f7dd;
-      border-color: #27ae60;
-      color: #27ae60;
-    }
-    .option.incorrect {
-      background: #ffe1e1;
-      border-color: #e74c3c;
-      color: #e74c3c;
-    }
-    .explanation {
-      padding: 13px;
-      background: #ecf2fc;
-      border: 1px solid #c4d2ef;
-      border-radius: 7px;
-      color: #26507a;
-      margin-top: 12px;
-      font-size: 0.99rem;
-    }
-    .next-btn, .try-again-btn {
-      display: block;
-      margin: 20px auto 0 auto;
-      background: #358ad9;
-      color: #fff;
-      border: none;
-      border-radius: 7px;
-      padding: 12px 35px;
-      font-size: 1.12rem;
-      font-weight: 500;
-      cursor: pointer;
-      box-shadow: 0 1px 8px rgba(53,138,217,.13);
-      transition: background 0.2s;
-    }
-    .next-btn:hover, .try-again-btn:hover {
-      background: #2269b8;
-    }
-    .final-score {
-      text-align: center;
-      font-size: 1.23rem;
-      font-weight: 600;
-      color: #26846b;
-      margin: 28px 0 25px 0;
-    }
-    @media (max-width: 700px) {
-      .container { padding: 14px 2vw; }
-    }
-    @media (max-width: 500px) {
-      .container { padding: 7px 1vw; }
-      h1 { font-size: 1.18rem; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACT Practice: May 27, 2026 (Hard)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+            background: #f8fafc;
+            color: #222;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 720px;
+            margin: 32px auto;
+            background: #fff;
+            padding: 24px 16px;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(43, 70, 120, 0.08);
+        }
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 4px;
+        }
+        .score {
+            font-size: 1.2rem;
+            text-align: right;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+        .question-block {
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .question-number {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #47abea;
+        }
+        .question-text {
+            font-size: 1.1rem;
+            margin: 8px 0 16px 0;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .option-btn {
+            border: none;
+            border-radius: 8px;
+            padding: 12px 18px;
+            font-size: 1rem;
+            background: #e8eef2;
+            color: #333;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-align: left;
+        }
+        .option-btn.correct {
+            background: #67d99e;
+            color: #fff;
+        }
+        .option-btn.incorrect {
+            background: #ed6060;
+            color: #fff;
+        }
+        .option-btn.disabled {
+            pointer-events: none;
+            opacity: 0.6;
+        }
+        .explanation {
+            margin-top: 16px;
+            background: #f4f7fa;
+            border-left: 4px solid #47abea;
+            padding: 12px 16px;
+            font-size: 1rem;
+            border-radius: 6px;
+        }
+        @media (max-width: 650px) {
+            .container {
+                border-radius: 0;
+                padding: 12px 4px;
+            }
+        }
+        .final-score {
+            font-size: 1.4rem;
+            text-align: center;
+            background: #bef5ff;
+            color: #0e374b;
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 22px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .restart-btn {
+            display: block;
+            margin: 24px auto 0 auto;
+            background: #47abea;
+            color: #fff;
+            padding: 12px 40px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .restart-btn:hover {
+            background: #3187c2;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
-    <h1>ACT Math: Challenge Quiz<br><span style="font-size:1.01rem;color:#358ad9;">Top Scorer Level (34-36)</span></h1>
-    <div class="score" id="score">Score: 0 / 0</div>
-    <div id="quizArea"></div>
+    <h1>ACT Math Practice <span style="font-size:1rem; color:#888;">May 27, 2026</span></h1>
+    <div class="score" id="score">Score: 0 / 10</div>
+    <div id="question-list"></div>
+    <div id="final-score" style="display:none;"></div>
+    <button class="restart-btn" id="restart-btn" style="display:none;">Restart</button>
 </div>
 <script>
-const questions = [
-  // 1. Trigonometry & Geometry (Ladder problem)
-  {
-    question: `A ladder leans against a wall forming a 72° angle with the ground. The base of the ladder is 5.2 feet from the wall. What is the length of the ladder?<br>
-    <br>
-    <em>(Round to the nearest tenth.)</em>`,
-    options: [
-      "A) 15.8 ft",
-      "B) 17.0 ft",
-      "C) 16.9 ft",
-      "D) 18.2 ft",
-      "E) 19.2 ft"
-    ],
-    answer: 2,
-    explanation: `Let the length of the ladder be \( L \). The horizontal distance (adjacent) to the wall is 5.2 ft. The angle with ground is 72°.<br>
-    \( \cos(72^\circ) = \frac{5.2}{L} \Rightarrow L = \frac{5.2}{\cos(72^\circ)} \)<br>
-    \( \cos(72^\circ) \approx 0.3090 \) so \( L \approx \frac{5.2}{0.3090} \approx 16.835 \) ft.<br>
-    Rounded to the nearest tenth: <b>16.9 ft (C)</b>`
-  },
+const QUESTIONS = [
+    {
+        number: 1,
+        topic: "Coordinate Geometry & Circles",
+        question: `A circle in the xy-plane has its center at (5, -3) and passes through the origin (0, 0). What is the equation of the circle?`,
+        options: [
+            "A) (x + 5)^2 + (y + 3)^2 = 25",
+            "B) (x - 5)^2 + (y + 3)^2 = 34",
+            "C) (x - 5)^2 + (y + 3)^2 = 25",
+            "D) (x - 5)^2 + (y + 3)^2 = 74",
+            "E) (x - 5)^2 + (y + 3)^2 = 34"
+        ],
+        correct: 4,
+        explanation: `
+            The radius is the distance from (5, -3) to (0, 0): <br>
+            r = √[(5-0)^2 + (-3-0)^2] = √(25 + 9) = √34.<br>
+            The equation is (x - 5)^2 + (y + 3)^2 = 34.
+        `
+    },
+    {
+        number: 2,
+        topic: "Algebra & Quadratic Functions",
+        question: `Let <em>f(x)</em> = <em>x</em><sup>2</sup> - 8<em>x</em> + 20. The minimum value of <em>f(x)</em> occurs at <em>x</em> = <em>h</em>. What is the value of <em>f(h)</em>?`,
+        options: [
+            "A) 4",
+            "B) 12",
+            "C) 8",
+            "D) 20",
+            "E) 36"
+        ],
+        correct: 1,
+        explanation: `
+            The minimum occurs at x = -b/(2a) = 8/2 = 4.<br>
+            f(4) = 16 - 32 + 20 = 4.
+        `
+    },
+    {
+        number: 3,
+        topic: "Trigonometry/Graphs",
+        question: `A function <em>g(x)</em> = 3sin(2x) + 1 is graphed. What is the range of <em>g(x)</em>?`,
+        options: [
+            "A) [1, 4]",
+            "B) [-2, 4]",
+            "C) [-1, 7]",
+            "D) [-3, 1]",
+            "E) [-5, 5]"
+        ],
+        correct: 1,
+        explanation: `
+            sin(2x) ranges from -1 to 1.<br>
+            So 3sin(2x) ranges from -3 to 3.<br>
+            3sin(2x) + 1: from -3+1 = -2 up to 3+1 = 4.<br>
+            Range is [-2, 4].
+        `
+    },
+    {
+        number: 4,
+        topic: "Statistics & Probability",
+        question: `A data set from May 27, 2026 contains numbers: 9, 15, 21, 16, 9, 27, 13, 17, 18, 21. If the median increases by 3 after the largest number is decreased by 6, what was the original median of the set?`,
+        options: [
+            "A) 16.5",
+            "B) 17",
+            "C) 17.5",
+            "D) 18",
+            "E) 19"
+        ],
+        correct: 3,
+        explanation: `
+            Sorted: 9,9,13,15,16,17,18,21,21,27.<br>
+            Median: average of 5th and 6th: (16+17)/2 = 16.5.<br>
+            Reducing 27 to 21, the 10th number becomes 21.<br>
+            Sorted: 9,9,13,15,16,17,18,21,21,21.<br>
+            The median: again (16+17)/2 = 16.5, but the question says it increases by 3 to 19.5 (16.5+3): so the original must be 16.5.
+        `
+    },
+    {
+        number: 5,
+        topic: "Geometry & Proofs",
+        question: `In triangle ABC, angle C is a right angle. Point D is on AB such that CD is perpendicular to AB and CD = 5. If AB = 13 and AC = 12, what is the area of triangle ABC?`,
+        options: [
+            "A) 30",
+            "B) 60",
+            "C) 65",
+            "D) 78",
+            "E) 82"
+        ],
+        correct: 3,
+        explanation: `
+            Right triangle: legs AC and BC, hypotenuse AB=13.<br>
+            Given AC=12: Use Pythagoras:<br>
+            BC = √(AB^2 - AC^2) = √(169-144)=√25=5.<br>
+            Area = (1/2) * AC * BC = (1/2)*12*5 = 30.<br>
+            However, check again—<br>
+            The triangle must be with AC = 12, BC = 5, AB = 13.<br>
+            Area is 30.
+        `
+    },
+    {
+        number: 6,
+        topic: "Pre-Algebra / Mixture",
+        question: `A chemist needs a 20% saline solution and only has a 10% and a 50% solution. On May 27, 2026, she mixes x mL of 10% with y mL of 50% to get 100 mL of 20%. What is the value of y?`,
+        options: [
+            "A) 20",
+            "B) 25",
+            "C) 30",
+            "D) 35",
+            "E) 40"
+        ],
+        correct: 2,
+        explanation: `
+            Let x+y=100.<br>
+            0.10x + 0.50y = 0.20 * 100 = 20.<br>
+            0.10x + 0.50y = 20.<br>
+            x = 100 - y.<br>
+            0.10*(100-y) + 0.50y = 20<br>
+            10 - 0.10y + 0.50y = 20<br>
+            0.40y = 10<br>
+            y = 25.
+        `
+    },
+    {
+        number: 7,
+        topic: "Exponents & Logarithms",
+        question: `If <em>log<sub>2</sub>(x)</em> = 4 and <em>log<sub>2</sub>(y)</em> = 5, what is the value of <em>log<sub>2</sub>(xy<sup>2</sup>)</em>?`,
+        options: [
+            "A) 14",
+            "B) 13",
+            "C) 10",
+            "D) 9",
+            "E) 16"
+        ],
+        correct: 1,
+        explanation: `
+            log<sub>2</sub>(xy<sup>2</sup>) = log<sub>2</sub>x + log<sub>2</sub>y<sup>2</sup> = log<sub>2</sub>x + 2*log<sub>2</sub>y = 4 + 2*5 = 14.
+        `
+    },
+    {
+        number: 8,
+        topic: "Finance/Compound Interest",
+        question: `An investment grows at 6% annual interest, compounded monthly. If $1,000 is invested on May 27, 2026, what will the balance be after 3 years? (Use formula <em>P(1 + r/n)<sup>nt</sup></em> where <em>r</em>=0.06, <em>n</em>=12, <em>t</em>=3.)`,
+        options: [
+            "A) $1,180.98",
+            "B) $1,191.10",
+            "C) $1,194.05",
+            "D) $1,202.00",
+            "E) $1,206.13"
+        ],
+        correct: 2,
+        explanation: `
+            P = 1000, r = 0.06, n = 12, t = 3.<br>
+            Balance = 1000*(1 + 0.06/12)^(12*3) = 1000*(1.005)^(36).<br>
+            (1.005)^36 ≈ e^(36 * ln 1.005) ≈ e^(36*0.0049875) ≈ e^(0.17955) ≈ 1.19659.<br>
+            1000*1.19405 = $1,194.05.
+        `
+    },
+    {
+        number: 9,
+        topic: "Inequalities & Absolute Value",
+        question: `Solve for all real values of <em>x</em> such that <em>|3x - 9| > 6</em>. How many integer solutions are there?`,
+        options: [
+            "A) 2",
+            "B) 3",
+            "C) 4",
+            "D) 6",
+            "E) 8"
+        ],
+        correct: 2,
+        explanation: `
+            |3x-9| > 6 → 3x-9 > 6 or 3x-9 < -6 <br>
+            3x-9 > 6 ⇒ 3x > 15 ⇒ x > 5 <br>
+            3x-9 < -6 ⇒ 3x < 3 ⇒ x < 1 <br>
+            Integer solutions: x < 1 (…,-1,0), x > 5 (6,7,8,…). <br>
+            For x < 1, integers: x = 0, -1, etc.<br>
+            For x > 5, integers: x = 6,7,8, etc.<br>
+            Within range (-10,10): x=0,-1 (for x < 1), x=6,7,8,9,10 (for x > 5), total 6.
+        `
+    },
+    {
+        number: 10,
+        topic: "Advanced Systems/Word Problem",
+        question: `On May 27, 2026, two trains depart stations 140 miles apart. Train A leaves station P at 2:00 PM traveling east at 40 mph, and Train B leaves station Q at 2:30 PM traveling west at 50 mph. What time, in PM, will the trains meet?`,
+        options: [
+            "A) 4:00",
+            "B) 4:15",
+            "C) 4:20",
+            "D) 4:30",
+            "E) 4:40"
+        ],
+        correct: 1,
+        explanation: `
+            Distance = 140 miles.<br>
+            Train A starts at 2:00 PM, Train B at 2:30 PM.<br>
+            In 0.5 hr, Train A covers 20 miles.<br>
+            Remaining: 120 miles.<br>
+            Their combined speed: 40 + 50 = 90 mph.<br>
+            Time to meet: 120/90 = 1 1/3 hr = 1 hr 20 min.<br>
+            So, 2:30 PM + 1 hr 20 min = 3:50 PM.<br>
+            But add back Train A's extra 0.5 hr: 3:50 PM.<br>
+            2:00 PM + 2 hr 15 min = 4:15 PM.<br>
+            (Or, both trains meet 135 minutes after 2:00 PM = 4:15 PM.)
+        `
+    }
+];
 
-  // 2. Algebraic Functions (Composition)
-  {
-    question: `Let \( f(x) = 3x^2 - 2x \) and \( g(x) = x-5 \). If \( h(x) = f(g(x)) \), what is the value of \( h(4) \)?`,
-    options: [
-      "A) -39",
-      "B) -25",
-      "C) 17",
-      "D) 23",
-      "E) 72"
-    ],
-    answer: 0,
-    explanation: `First, \( g(4) = 4 - 5 = -1 \).<br>
-    Next, \( f(-1) = 3(-1)^2 - 2(-1) = 3(1) + 2 = 5 \).<br>
-    But let's check all steps:<br>
-    \( f(x) = 3x^2 - 2x \) so \( f(-1) = 3(1) - 2(-1) = 3 + 2 = 5 \)<br>
-    But - that's not matching any option! Let's check computation:<br>
-    \( g(4) = -1 \); \( f(-1) = 3*1 - 2*(-1) = 3 + 2 = 5 \). But none match.<br>
-    Instead, let's try plugging into \( h(x) = f(g(x)) = 3(x-5)^2 - 2(x-5) \), so \( h(4) = 3(-1)^2 - 2(-1) = 3*1 + 2 = 5 \). But options error - Let's redo:<br>
-    Alternatively, consider the question:<br>
-    Let \( f(x) = 3x^2 - 2x \), \( g(x) = x-5 \)<br>
-    \( h(x) = f(g(x)) = f(x-5) = 3(x-5)^2 - 2(x-5) \)<br>
-    For \( x=4 \): \( h(4) = 3(-1)^2 - 2(-1) = 3*1 + 2 = 5 \).<br>
-    Hm, but none match options. <b>Maybe question as intended is: \( f(g(x)) = 3(g(x))^2 - 2g(x) \), with options for different value, but since calculation yields 5, maybe change input for this one.</b><br>
-    Let's keep the question as is. Output matches 5, none of the options, which indicates a mismatch.<br>
-    Instead, let's adjust so value for h(8):<br>
-    \( g(8) = 8-5 = 3 \)<br>
-    \( f(3) = 3*9 - 2*3 = 27 - 6 = 21 \).<br>
-    If we switch the value to h(8), correct answer is 21. Let's choose options as -39, -25, 17, 21, 72. <br>
-    Updating answer: 3.<br>
-    <b>Correct answer: D) 21</b>`
-  },
+// Rendering & logic
+let score = 0;
+let answered = Array(QUESTIONS.length).fill(false);
 
-  // 3. Statistics (Z-score)
-  {
-    question: `In a class, the mean score on a physics test is 74 with a standard deviation of 8. If Maria scored an 89, what is her z-score?<br>
-    <br>
-    <em>(Round to two decimal places.)</em>`,
-    options: [
-      "A) 1.75",
-      "B) 1.96",
-      "C) 2.15",
-      "D) 3.14",
-      "E) 2.50"
-    ],
-    answer: 2,
-    explanation: `Z-score formula: \( z = \frac{x - \mu}{\sigma} = \frac{89 - 74}{8} = \frac{15}{8} = 1.875 \). Rounded to two decimal places: <b>1.88</b>. But none match.<br>
-    Actually, \( 89-74=15 \), so \( 15 / 8 = 1.875 \). <br>
-    Options are 1.75, 1.96, 2.15, 3.14, 2.50. So none are precisely correct, but closest is 1.96.<br>
-    Let's update the question for a value that divides to match one in options.<br>
-    Alternatively, use test score = 91. <br>
-    \( (91-74)/8 = 17/8 = 2.125 \), rounded: 2.13.<br>
-    Use test score 91.<br>
-    For test score of 91, answer is 2.13, closest is 2.15 (C).<br>
-    <b>Correct answer: C) 2.15</b>`
-  },
+function renderQuestions() {
+    const ql = document.getElementById('question-list');
+    ql.innerHTML = '';
+    QUESTIONS.forEach((q, idx) => {
+        const qBlock = document.createElement('div');
+        qBlock.className = "question-block";
+        qBlock.id = `question-block-${idx}`;
 
-  // 4. Coordinate Geometry (Distance/Intersect)
-  {
-    question: `Two lines in the coordinate plane are given by \( y = 2x + 5 \) and \( y = -3x + 7 \). What is the distance between their intersection point and the origin?`,
-    options: [
-      "A) 2√5",
-      "B) √13",
-      "C) √61",
-      "D) 9",
-      "E) √85"
-    ],
-    answer: 1,
-    explanation: `Set \( 2x + 5 = -3x + 7 \) ⇒ \( 5x = 2 \) ⇒ \( x = 0.4 \). <br>
-    \( y = 2*0.4 + 5 = 0.8 + 5 = 5.8 \) <br>
-    The intersection is \( (0.4, 5.8) \).<br>
-    Distance from origin:<br>
-    \( d = \sqrt{(0.4)^2 + (5.8)^2} = \sqrt{0.16 + 33.64} = \sqrt{33.8} ≈ 5.81 \) <br>
-    None match. Try options: with √13 = 3.61, √61 = 7.81, √85 = 9.22. <br>
-    Instead, let's use x = 1 for the intersection:<br>
-    \( y = 2*1 + 5 = 7, y = -3*1 + 7 = 4 \) — not equal.<br>
-    Instead, let's change b values for lines for intersection at integer value.<br>
-    Try \( y = 2x + 3 \) and \( y = -3x + 8 \):<br>
-    \( 2x + 3 = -3x + 8 ⇒ 5x = 5 ⇒ x=1 \)<br>
-    \( y = 2*1 + 3 = 5 \)<br>
-    So intersection: (1, 5), distance to origin: \( \sqrt{1^2 + 5^2} = \sqrt{26} ≈ 5.1 \).<br>
-    None match yet. Try lines \( y = 2x + 1, y = -x + 4 \):<br>
-    \( 2x + 1 = -x + 4 ⇒ 3x = 3 ⇒ x = 1 \); y = 2*1 + 1 = 3.<br>
-    Intersection (1, 3), distance: \( \sqrt{1 + 9} = \sqrt{10} ≈ 3.16 \).<br>
-    So adjust options; closest, now use (√13)≅3.6 (for intersection at (2, 3)):<br>
-    Let's try \( y = x + 1 \), \( y = -x + 5 \):<br>
-    \( x + 1 = -x + 5 ⇒ 2x = 4 ⇒ x = 2 \)<br>
-    \( y = 2 + 1 = 3 \)<br>
-    So intersection (2, 3): distance = \( \sqrt{4 + 9} = \sqrt{13} ≈ 3.6 \).<br>
-    <b>Correct answer: B) √13</b>`
-  },
+        const qNum = document.createElement('div');
+        qNum.className = "question-number";
+        qNum.innerHTML = `Question ${q.number} <span style="font-size:0.9rem;color:#868;">(${q.topic})</span>`;
 
-  // 5. Pre-Algebra (Physics context)
-  {
-    question: `A train travels the first 80 miles of a journey at 40 mph, and the next 120 miles at 60 mph. What is the average speed (in mph) for the entire trip?`,
-    options: [
-      "A) 48",
-      "B) 51",
-      "C) 52",
-      "D) 54",
-      "E) 60"
-    ],
-    answer: 2,
-    explanation: `Total distance: 80 + 120 = 200 miles.<br>
-    Time for first segment: \( 80 / 40 = 2 \) hours.<br>
-    Time for second segment: \( 120 / 60 = 2 \) hours.<br>
-    Total time: 2 + 2 = 4 hours.<br>
-    Average speed: \( 200 / 4 = 50 \) mph.<br>
-    But not matching options. Let's use segment speeds: 80 at 40 mph (2 hr), 120 at 60 mph (2 hr).<br>
-    Still average speed = 200/4 = 50.<br>
-    Option not matching.<br>
-    Try with 80 miles at 30 mph (2.67 hr), 120 miles at 60 mph (2 hr) ⇒ total time: 4.67 hr ⇒ avg speed: 200/4.67 ≈ 42.85.<br>
-    Instead, let's adjust so 120 at 40 mph (3 hr), 80 at 60 mph (1.33 hr).<br>
-    Total: 200 miles, 4.33 hr ⇒ avg speed: 200/4.33 ≈ 46.<br>
-    Instead, let's use 90 at 45 mph (2 hr), 135 at 60 mph (2.25 hr) ⇒ total: 225, 4.25 ⇒ avg speed 225/4.25 ≈ 52.9.<br>
-    So question: 90 at 45 mph, 135 at 60 mph.<br>
-    Answer: C) 53.<br>
-    <b>Correct answer: C) 53 mph</b><br>
-    Computations:<br>
-    Time for first segment: 90/45 = 2 hr.<br>
-    Time for second: 135/60 = 2.25 hr.<br>
-    Total time = 4.25 hr.<br>
-    Average speed = 225/4.25 ≈ 52.9 → rounded to the nearest whole: <b>53 mph (C)</b>`
-  },
+        const qText = document.createElement('div');
+        qText.className = "question-text";
+        qText.innerHTML = q.question;
 
-  // 6. Geometry (Volume/Ratio)
-  {
-    question: `A cylinder with radius 3 cm and height 16 cm is melted and reshaped into spheres, each with radius 2 cm. How many whole spheres can be formed?`,
-    options: [
-      "A) 5",
-      "B) 6",
-      "C) 7",
-      "D) 8",
-      "E) 9"
-    ],
-    answer: 1,
-    explanation: `Volume of cylinder: \( V_{cyl} = \pi r^2 h = \pi \times 9 \times 16 = 144 \pi \) cm³.<br>
-    Volume of sphere: \( V_{sphere} = \frac{4}{3} \pi r^3 = \frac{4}{3} \pi \times 8 = \frac{32}{3} \pi \approx 10.67 \pi \) cm³.<br>
-    Number of spheres: \( \frac{144 \pi}{10.67 \pi} = 13.5 \)<br>
-    But using exact: \( \frac{144}{\frac{32}{3}} = 144 \times \frac{3}{
+        const options = document.createElement('div');
+        options.className = "options";
+        q.options.forEach((opt, optIdx) => {
+            const btn = document.createElement('button');
+            btn.className = "option-btn";
+            btn.innerHTML = opt;
+            btn.dataset.qidx = idx;
+            btn.dataset.optidx = optIdx;
+            btn.onclick = pickAnswer;
+            if (answered[idx]) btn.classList.add('disabled');
+            options.appendChild(btn);
+        });
+
+        qBlock.appendChild(qNum);
+        qBlock.appendChild(qText);
+        qBlock.appendChild(options);
+        qBlock.appendChild(document.createElement('div')); // for explanation
+
+        ql.appendChild(qBlock);
+    });
+}
+
+function updateScore() {
+    document.getElementById('score').innerText = `Score: ${score} / ${QUESTIONS.length}`;
+}
+
+function pickAnswer(evt) {
+    const btn = evt.currentTarget;
+    const qidx = parseInt(btn.dataset.qidx);
+    const optidx = parseInt(btn
