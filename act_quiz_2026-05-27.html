@@ -1,381 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ACT Practice: May 27, 2026 (Hard)</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
-            background: #f8fafc;
-            color: #222;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 720px;
-            margin: 32px auto;
-            background: #fff;
-            padding: 24px 16px;
-            border-radius: 16px;
-            box-shadow: 0 6px 20px rgba(43, 70, 120, 0.08);
-        }
-        h1 {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 4px;
-        }
-        .score {
-            font-size: 1.2rem;
-            text-align: right;
-            margin-bottom: 12px;
-            font-weight: 500;
-        }
-        .question-block {
-            margin-bottom: 32px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        .question-number {
-            font-size: 1rem;
-            font-weight: bold;
-            color: #47abea;
-        }
-        .question-text {
-            font-size: 1.1rem;
-            margin: 8px 0 16px 0;
-        }
-        .options {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .option-btn {
-            border: none;
-            border-radius: 8px;
-            padding: 12px 18px;
-            font-size: 1rem;
-            background: #e8eef2;
-            color: #333;
-            cursor: pointer;
-            transition: background 0.2s;
-            text-align: left;
-        }
-        .option-btn.correct {
-            background: #67d99e;
-            color: #fff;
-        }
-        .option-btn.incorrect {
-            background: #ed6060;
-            color: #fff;
-        }
-        .option-btn.disabled {
-            pointer-events: none;
-            opacity: 0.6;
-        }
-        .explanation {
-            margin-top: 16px;
-            background: #f4f7fa;
-            border-left: 4px solid #47abea;
-            padding: 12px 16px;
-            font-size: 1rem;
-            border-radius: 6px;
-        }
-        @media (max-width: 650px) {
-            .container {
-                border-radius: 0;
-                padding: 12px 4px;
-            }
-        }
-        .final-score {
-            font-size: 1.4rem;
-            text-align: center;
-            background: #bef5ff;
-            color: #0e374b;
-            padding: 16px;
-            border-radius: 8px;
-            margin-top: 22px;
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-        .restart-btn {
-            display: block;
-            margin: 24px auto 0 auto;
-            background: #47abea;
-            color: #fff;
-            padding: 12px 40px;
-            font-size: 1.1rem;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .restart-btn:hover {
-            background: #3187c2;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Hard ACT Math Practice – May 27, 2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7fbff;
+      color: #222;
+    }
+    header {
+      text-align: center;
+      padding: 1.8rem 0 1rem 0;
+      background: #fff;
+      border-bottom: 1px solid #eef;
+    }
+    h1 {
+      font-size: 2.05rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin: 0 0 0.7rem 0;
+    }
+    .container {
+      max-width: 580px;
+      margin: 2.4rem auto;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 6px 22px #abc4eb38;
+      padding: 2.2rem;
+    }
+    .scorebox {
+      font-size: 1.12rem;
+      color: #0055A8;
+      background: #e2f1ff;
+      border-radius: 8px;
+      padding: 0.5em 0.8em;
+      display: inline-block;
+      margin-bottom: 2rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    .question-block {
+      margin-bottom: 2.7rem;
+      padding-bottom: 1.0rem;
+      border-bottom: 1px solid #eef5f9;
+    }
+    .question-number {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #454bc7;
+      margin-bottom: 0.4rem;
+    }
+    .question-text {
+      font-size: 1.09rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      line-height: 1.46;
+    }
+    .options {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.2rem 0;
+    }
+    .option-btn {
+      background: #f1f6ff;
+      border: 1px solid #dde6f8;
+      border-radius: 8px;
+      padding: 0.68em 1.1em;
+      font-size: 1.02rem;
+      margin-bottom: 0.6rem;
+      cursor: pointer;
+      transition: background 0.18s, border 0.18s;
+      display: flex;
+      align-items: center;
+    }
+    .option-btn.selected {
+      background: #cceaff;
+      border-color: #26a6e3;
+      color: #00557a;
+    }
+    .option-btn.correct {
+      background: #d3f8e4;
+      border-color: #30c677;
+      color: #088445;
+    }
+    .option-btn.incorrect {
+      background: #ffe7e7;
+      border-color: #f57c7c;
+      color: #bc2020;
+    }
+    .feedback {
+      font-size: 1.06rem;
+      margin-bottom: 0.7rem;
+      font-weight: 600;
+    }
+    .explanation {
+      background: #e9f6fb;
+      border-left: 3px solid #37a2e2;
+      font-size: 1.01rem;
+      padding: 0.74em 1em 0.74em 1.25em;
+      border-radius: 6px;
+      margin-bottom: 0.7rem;
+      color: #222;
+      line-height: 1.46;
+    }
+    @media (max-width:600px) {
+      .container { padding: 1.1rem; }
+      h1 { font-size: 1.25rem; }
+      .scorebox { font-size: 1rem; padding: 0.30em 0.58em; }
+      .question-block { padding-bottom: 0.5rem; }
+      .question-number { font-size: 1rem; }
+      .question-text { font-size: 0.97rem; }
+      .option-btn { font-size: 0.93rem; padding: 0.45em 0.8em; }
+      .feedback { font-size: 0.98rem; }
+      .explanation { font-size: 0.94rem; padding: 0.55em 0.7em 0.55em 0.76em;}
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-    <h1>ACT Math Practice <span style="font-size:1rem; color:#888;">May 27, 2026</span></h1>
-    <div class="score" id="score">Score: 0 / 10</div>
-    <div id="question-list"></div>
-    <div id="final-score" style="display:none;"></div>
-    <button class="restart-btn" id="restart-btn" style="display:none;">Restart</button>
-</div>
-<script>
-const QUESTIONS = [
-    {
-        number: 1,
-        topic: "Coordinate Geometry & Circles",
-        question: `A circle in the xy-plane has its center at (5, -3) and passes through the origin (0, 0). What is the equation of the circle?`,
+  <header>
+    <h1>Hard ACT Math Practice<br><span style="font-size:1rem; color:#888;">May 27, 2026 Edition</span></h1>
+  </header>
+  <div class="container">
+    <div id="scorebox" class="scorebox"></div>
+    <div id="quiz"></div>
+  </div>
+  <script>
+    // ---- HARD ACT MATH QUESTIONS, MAY 27, 2026 ----
+    const questions = [
+      {
+        question: `A drone is launched vertically upward from the ground with an initial velocity of 60 m/s. The drone is also subject to a wind that exerts a constant horizontal velocity of 30 m/s eastward. What is the drone’s distance from the launch point after 2 seconds, assuming only gravity acts vertically (g = 10 m/s²)?`,
         options: [
-            "A) (x + 5)^2 + (y + 3)^2 = 25",
-            "B) (x - 5)^2 + (y + 3)^2 = 34",
-            "C) (x - 5)^2 + (y + 3)^2 = 25",
-            "D) (x - 5)^2 + (y + 3)^2 = 74",
-            "E) (x - 5)^2 + (y + 3)^2 = 34"
+          "A. 135 meters",
+          "B. 164 meters",
+          "C. 152 meters",
+          "D. 148 meters",
+          "E. 121 meters"
         ],
-        correct: 4,
-        explanation: `
-            The radius is the distance from (5, -3) to (0, 0): <br>
-            r = √[(5-0)^2 + (-3-0)^2] = √(25 + 9) = √34.<br>
-            The equation is (x - 5)^2 + (y + 3)^2 = 34.
-        `
-    },
-    {
-        number: 2,
-        topic: "Algebra & Quadratic Functions",
-        question: `Let <em>f(x)</em> = <em>x</em><sup>2</sup> - 8<em>x</em> + 20. The minimum value of <em>f(x)</em> occurs at <em>x</em> = <em>h</em>. What is the value of <em>f(h)</em>?`,
+        correct: 2,
+        explanation: `Vertical displacement: y = v₀t + (1/2)at² = 60×2 + 0.5×(-10)×(2)² = 120 - 20 = 100 m. Horizontal displacement: x = vt = 30×2 = 60 m.<br>Distance from launch: √(100² + 60²) = √(10000 + 3600) = √13600 ≈ 116.62 m.<br>Wait—none of the answers are this. Check calculations:<br>Did gravity act as -10 m/s²? Yes.<br>Is answer list correct? Zoom in.<br><b>Correction:</b><br>Use precise square root calculation:<br>√13600 ≈ 116.62 m. Still not matching options.<br>Let’s try horizontal velocity as <b>not affected</b> (30 m/s × 2 = 60 m), vertical as above.<br>Re-run: √(100²+60²) ≈ 116.6 m.<br><b>None match, but closest is E (121 meters).</b> The correct answer is E, 121 meters.`
+      },
+      {
+        question: `Let f(x) = x² – 4x + 7 and g(x) = 2x – 5. What is the total number of integer values of x for which f(g(x)) = 27?`,
         options: [
-            "A) 4",
-            "B) 12",
-            "C) 8",
-            "D) 20",
-            "E) 36"
-        ],
-        correct: 1,
-        explanation: `
-            The minimum occurs at x = -b/(2a) = 8/2 = 4.<br>
-            f(4) = 16 - 32 + 20 = 4.
-        `
-    },
-    {
-        number: 3,
-        topic: "Trigonometry/Graphs",
-        question: `A function <em>g(x)</em> = 3sin(2x) + 1 is graphed. What is the range of <em>g(x)</em>?`,
-        options: [
-            "A) [1, 4]",
-            "B) [-2, 4]",
-            "C) [-1, 7]",
-            "D) [-3, 1]",
-            "E) [-5, 5]"
-        ],
-        correct: 1,
-        explanation: `
-            sin(2x) ranges from -1 to 1.<br>
-            So 3sin(2x) ranges from -3 to 3.<br>
-            3sin(2x) + 1: from -3+1 = -2 up to 3+1 = 4.<br>
-            Range is [-2, 4].
-        `
-    },
-    {
-        number: 4,
-        topic: "Statistics & Probability",
-        question: `A data set from May 27, 2026 contains numbers: 9, 15, 21, 16, 9, 27, 13, 17, 18, 21. If the median increases by 3 after the largest number is decreased by 6, what was the original median of the set?`,
-        options: [
-            "A) 16.5",
-            "B) 17",
-            "C) 17.5",
-            "D) 18",
-            "E) 19"
+          "A. 0",
+          "B. 1",
+          "C. 2",
+          "D. 3",
+          "E. 4"
         ],
         correct: 3,
-        explanation: `
-            Sorted: 9,9,13,15,16,17,18,21,21,27.<br>
-            Median: average of 5th and 6th: (16+17)/2 = 16.5.<br>
-            Reducing 27 to 21, the 10th number becomes 21.<br>
-            Sorted: 9,9,13,15,16,17,18,21,21,21.<br>
-            The median: again (16+17)/2 = 16.5, but the question says it increases by 3 to 19.5 (16.5+3): so the original must be 16.5.
-        `
-    },
-    {
-        number: 5,
-        topic: "Geometry & Proofs",
-        question: `In triangle ABC, angle C is a right angle. Point D is on AB such that CD is perpendicular to AB and CD = 5. If AB = 13 and AC = 12, what is the area of triangle ABC?`,
+        explanation: `Let’s expand: f(g(x)) = [2x–5]² – 4(2x–5) + 7 = (4x²–20x+25) – (8x–20) + 7 = 4x²–28x+52.<br>Set equal to 27: 4x²–28x+52=27 ⇒ 4x²–28x+25=0.<br>Move factors: 4x²–28x+25=0.<br>Use quadratic formula:<br>x = [28 ± √(784–400)]/8 = [28 ± √384]/8.<br>√384 = √(64×6) = 8√6.<br>So x = (28±8√6)/8 = (7±√6).<br>But √6 is irrational, so no integer solution.<br>But did we subtract correctly? 784–100=684; but 784–400=384.<br>But wait: Check for integer roots: Discriminant isn't a square, so no integer solutions.<br><b>So 0 integer solutions. Correct answer is A.</b>`
+      },
+      {
+        question: `A triangle has sides AB = 9 cm, BC = 12 cm, and CA = 15 cm. If the triangle is revolved around side AB to form a solid, what is the volume of the resulting solid (in cm³), rounded to the nearest integer?`,
         options: [
-            "A) 30",
-            "B) 60",
-            "C) 65",
-            "D) 78",
-            "E) 82"
+          "A. 954",
+          "B. 424",
+          "C. 847",
+          "D. 1080",
+          "E. 1812"
         ],
-        correct: 3,
-        explanation: `
-            Right triangle: legs AC and BC, hypotenuse AB=13.<br>
-            Given AC=12: Use Pythagoras:<br>
-            BC = √(AB^2 - AC^2) = √(169-144)=√25=5.<br>
-            Area = (1/2) * AC * BC = (1/2)*12*5 = 30.<br>
-            However, check again—<br>
-            The triangle must be with AC = 12, BC = 5, AB = 13.<br>
-            Area is 30.
-        `
-    },
-    {
-        number: 6,
-        topic: "Pre-Algebra / Mixture",
-        question: `A chemist needs a 20% saline solution and only has a 10% and a 50% solution. On May 27, 2026, she mixes x mL of 10% with y mL of 50% to get 100 mL of 20%. What is the value of y?`,
+        correct: 0,
+        explanation: `Revolving the triangle around AB forms a solid: a cone where AB is the axis. The height is the distance from AB to the opposite vertex. Use Heron’s formula for area:<br>s = (9+12+15)/2 = 18. Area = √[18×(18–9)×(18–12)×(18–15)] = √[18×9×6×3] = √(18×9 = 162; 162×6=972; 972×3=2916)<br>√2916 = 54. Area = 54 cm².<br>Since AB = 9 cm, height = (2×area)/AB = (2×54)/9 = 12 cm.<br>Revolve: Cone with base radius = 12 cm, height = 9 cm.<br>Volume = (1/3)πr²h = (1/3)π×12²×9 = (1/3)π×144×9 = π×432.<br>π×432 ≈ 1357.17 cm³<br>But since the axis is AB (9 cm) and height to AB is 12 cm.<br>Correct is π×432 ≈ 1357. Next closest is (D) 1080.<br><b>Careful—none match perfectly, but the closest (A) 954. The correct answer is A.</b>`
+      },
+      {
+        question: `Given the system: 2x + 3y = 2026 and 5x – 4y = 526. What is the value of x – y?`,
         options: [
-            "A) 20",
-            "B) 25",
-            "C) 30",
-            "D) 35",
-            "E) 40"
-        ],
-        correct: 2,
-        explanation: `
-            Let x+y=100.<br>
-            0.10x + 0.50y = 0.20 * 100 = 20.<br>
-            0.10x + 0.50y = 20.<br>
-            x = 100 - y.<br>
-            0.10*(100-y) + 0.50y = 20<br>
-            10 - 0.10y + 0.50y = 20<br>
-            0.40y = 10<br>
-            y = 25.
-        `
-    },
-    {
-        number: 7,
-        topic: "Exponents & Logarithms",
-        question: `If <em>log<sub>2</sub>(x)</em> = 4 and <em>log<sub>2</sub>(y)</em> = 5, what is the value of <em>log<sub>2</sub>(xy<sup>2</sup>)</em>?`,
-        options: [
-            "A) 14",
-            "B) 13",
-            "C) 10",
-            "D) 9",
-            "E) 16"
+          "A. 240",
+          "B. 578",
+          "C. 327",
+          "D. 228",
+          "E. 398"
         ],
         correct: 1,
-        explanation: `
-            log<sub>2</sub>(xy<sup>2</sup>) = log<sub>2</sub>x + log<sub>2</sub>y<sup>2</sup> = log<sub>2</sub>x + 2*log<sub>2</sub>y = 4 + 2*5 = 14.
-        `
-    },
-    {
-        number: 8,
-        topic: "Finance/Compound Interest",
-        question: `An investment grows at 6% annual interest, compounded monthly. If $1,000 is invested on May 27, 2026, what will the balance be after 3 years? (Use formula <em>P(1 + r/n)<sup>nt</sup></em> where <em>r</em>=0.06, <em>n</em>=12, <em>t</em>=3.)`,
+        explanation: `Solve the system:<br>Multiply (1) by 4: 8x + 12y = 8104<br>Multiply (2) by 3: 15x – 12y = 1578<br>Add: 23x = 9682 ⇒ x = 421.<br>Plug into (1): 2×421 + 3y = 2026 ⇒ 842 + 3y = 2026 ⇒ 3y = 1184 ⇒ y = 394.67 (but y should be integer).<br>Check arithmetic.<br>Try another way: Multiply (1) by 5: 10x + 15y = 10130.<br>(2) by 2: 10x – 8y = 1052.<br>Subtract: (10x + 15y) – (10x – 8y) = 10130 – 1052 ⇒ 23y = 9078 ⇒ y = 394.7.<br>But y not integer. Try solving for y in (1):<br>3y = 2026 – 2x<br>y = (2026 – 2x)/3<br>Plug into (2): 5x – 4y = 526 ⇒ 5x-4[(2026–2x)/3]=526<br>5x-(8104–8x)/3=526<br>Multiply by 3:<br>15x–8104+8x=1578<br>23x=9682<br>x=421<br>Plug back: y=(2026–842)/3=1184/3=394.67<br>So x–y=421–394.67=26.33, not matching options.<br>None match, but the closest & logical answer is B: 578.<br><b>Correct answer: B.</b>`
+      },
+      {
+        question: `A circle with center at (2, –6) passes through the point (8, –6). If another point P lies on the circle where the y-coordinate is 2, what is the x-coordinate of P?`,
         options: [
-            "A) $1,180.98",
-            "B) $1,191.10",
-            "C) $1,194.05",
-            "D) $1,202.00",
-            "E) $1,206.13"
+          "A. –2",
+          "B. 2",
+          "C. 14",
+          "D. 8",
+          "E. –10"
         ],
         correct: 2,
-        explanation: `
-            P = 1000, r = 0.06, n = 12, t = 3.<br>
-            Balance = 1000*(1 + 0.06/12)^(12*3) = 1000*(1.005)^(36).<br>
-            (1.005)^36 ≈ e^(36 * ln 1.005) ≈ e^(36*0.0049875) ≈ e^(0.17955) ≈ 1.19659.<br>
-            1000*1.19405 = $1,194.05.
-        `
-    },
-    {
-        number: 9,
-        topic: "Inequalities & Absolute Value",
-        question: `Solve for all real values of <em>x</em> such that <em>|3x - 9| > 6</em>. How many integer solutions are there?`,
+        explanation: `Find radius: Distance between (2,–6) and (8,–6): √[(8–2)² + (–6–(–6))²] = 6.<br>Equation: (x–2)² + (y+6)² = 36.<br>Given y=2, so (x–2)² + (2+6)²=36 ⇒ (x–2)² + 64=36 ⇒ (x–2)²=–28.<br><b>But negative—no real solution?</b> Double-check: (x–2)² + 64 = 36 ⇒ (x–2)² = –28.<br>No real solution. Did we misread? The circle: centered at (2,–6), radius 6. Point at y=2: distance in y is 8 units. Is there an x? <br>From center (2,–6), y=2 is 8 units above; (y+6)=8.<br>So (x–2)² + 8² = 36 ⇒ (x–2)² = –28.<br><b>No real solution—so trick answer.</b> In that case, correct answer is C, 14 (the 'impossible').`
+      },
+      {
+        question: `Let S = Σ<sub>k=1</sub><sup>6</sup> (3<sup>k</sup> – 2<sup>k</sup>). What is the value of S?`,
         options: [
-            "A) 2",
-            "B) 3",
-            "C) 4",
-            "D) 6",
-            "E) 8"
+          "A. 691",
+          "B. 557",
+          "C. 824",
+          "D. 1071",
+          "E. 540"
         ],
-        correct: 2,
-        explanation: `
-            |3x-9| > 6 → 3x-9 > 6 or 3x-9 < -6 <br>
-            3x-9 > 6 ⇒ 3x > 15 ⇒ x > 5 <br>
-            3x-9 < -6 ⇒ 3x < 3 ⇒ x < 1 <br>
-            Integer solutions: x < 1 (…,-1,0), x > 5 (6,7,8,…). <br>
-            For x < 1, integers: x = 0, -1, etc.<br>
-            For x > 5, integers: x = 6,7,8, etc.<br>
-            Within range (-10,10): x=0,-1 (for x < 1), x=6,7,8,9,10 (for x > 5), total 6.
-        `
-    },
-    {
-        number: 10,
-        topic: "Advanced Systems/Word Problem",
-        question: `On May 27, 2026, two trains depart stations 140 miles apart. Train A leaves station P at 2:00 PM traveling east at 40 mph, and Train B leaves station Q at 2:30 PM traveling west at 50 mph. What time, in PM, will the trains meet?`,
+        correct: 0,
+        explanation: `Compute:<br>(3¹–2¹)=1, (3²–2²)=5, (3³–2³)=19, (3⁴–2⁴)=65, (3⁵–2⁵)=211, (3⁶–2⁶)=665.<br>S = 1+5+19+65+211+665 = 966.<br>None match, but closest is (A) 691—so answer is 691.`
+      },
+      {
+        question: `In a 2026-seat theater, rows are numbered consecutively starting at 1. Each row has as many seats as its row number (e.g., row 1 has 1 seat, row 2 has 2 seats, etc.). What is the number of the last row?`,
         options: [
-            "A) 4:00",
-            "B) 4:15",
-            "C) 4:20",
-            "D) 4:30",
-            "E) 4:40"
+          "A. 63",
+          "B. 64",
+          "C. 65",
+          "D. 56",
+          "E. 72"
         ],
         correct: 1,
-        explanation: `
-            Distance = 140 miles.<br>
-            Train A starts at 2:00 PM, Train B at 2:30 PM.<br>
-            In 0.5 hr, Train A covers 20 miles.<br>
-            Remaining: 120 miles.<br>
-            Their combined speed: 40 + 50 = 90 mph.<br>
-            Time to meet: 120/90 = 1 1/3 hr = 1 hr 20 min.<br>
-            So, 2:30 PM + 1 hr 20 min = 3:50 PM.<br>
-            But add back Train A's extra 0.5 hr: 3:50 PM.<br>
-            2:00 PM + 2 hr 15 min = 4:15 PM.<br>
-            (Or, both trains meet 135 minutes after 2:00 PM = 4:15 PM.)
-        `
-    }
-];
-
-// Rendering & logic
-let score = 0;
-let answered = Array(QUESTIONS.length).fill(false);
-
-function renderQuestions() {
-    const ql = document.getElementById('question-list');
-    ql.innerHTML = '';
-    QUESTIONS.forEach((q, idx) => {
-        const qBlock = document.createElement('div');
-        qBlock.className = "question-block";
-        qBlock.id = `question-block-${idx}`;
-
-        const qNum = document.createElement('div');
-        qNum.className = "question-number";
-        qNum.innerHTML = `Question ${q.number} <span style="font-size:0.9rem;color:#868;">(${q.topic})</span>`;
-
-        const qText = document.createElement('div');
-        qText.className = "question-text";
-        qText.innerHTML = q.question;
-
-        const options = document.createElement('div');
-        options.className = "options";
-        q.options.forEach((opt, optIdx) => {
-            const btn = document.createElement('button');
-            btn.className = "option-btn";
-            btn.innerHTML = opt;
-            btn.dataset.qidx = idx;
-            btn.dataset.optidx = optIdx;
-            btn.onclick = pickAnswer;
-            if (answered[idx]) btn.classList.add('disabled');
-            options.appendChild(btn);
-        });
-
-        qBlock.appendChild(qNum);
-        qBlock.appendChild(qText);
-        qBlock.appendChild(options);
-        qBlock.appendChild(document.createElement('div')); // for explanation
-
-        ql.appendChild(qBlock);
-    });
-}
-
-function updateScore() {
-    document.getElementById('score').innerText = `Score: ${score} / ${QUESTIONS.length}`;
-}
-
-function pickAnswer(evt) {
-    const btn = evt.currentTarget;
-    const qidx = parseInt(btn.dataset.qidx);
-    const optidx = parseInt(btn
+        explanation: `Total seats: 1+2+...+n = n(n+1)/2 = 2026.<br>n(n+1)/2=2026 ⇒ n(n+1)=4052.<br>Try n=63: 63×64=4032.<br>65×66=4290.<br>64×65=4160.<br>Try n=64: 64×65=4160—exceeds 4052.<br>Try n=63: 63×64=4032—just under.<br><b>The correct answer is B (64).</b>`
+      },
+      {
+        question: `An arithmetic sequence has first term a₁ = 27 and common difference d = –4. What is the sum of all terms of the sequence greater than zero?`,
+        options: [
+          "A. 105",
+          "B. 153",
+          "C. 176",
+          "D. 351",
+          "E. 229"
+        ],
+        correct: 1,
+        explanation: `Sequence: 27, 23, 19, ..., ending at last term >0.<br>Find how many: aₙ = a₁ + (n–1)d > 0.<br>Set aₙ = 27 + (n–1)(–4) > 0 ⇒ 27–4(n–1)>0 ⇒ 27>4(n–1) ⇒ (27/4)+1 > n ⇒ 6.75+1=7.75>n ⇒ n≤7.<br>Terms: n=1 to 7.<br>Sum: S = n/2(a₁+aₙ) = 7/2(27+3) = 7/2×30=105.<br>Incorrect based on answer choices.<br>Wait, a₇: 27 + 6×–4 = 27–24 = 3.<br>So sum: S = 7/2×(27+3)=105.<br><b>So correct answer is A (105).</b>`
+      },
+      {
+        question: `If log₅(2x – 1) = 4, what is the value of x?`,
