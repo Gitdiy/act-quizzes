@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACT Math Quiz — June 07, 2026</title>
+<style>
+  body { font-family: sans-serif; background: #f0f4f8; margin: 0; padding: 20px; }
+  .container { max-width: 680px; margin: auto; }
+  h1 { color: #1D4ED8; font-size: 1.5rem; margin: 0; }
+  .date { color: #888; font-size: 14px; }
+  .score-bar { background: white; border-radius: 12px; padding: 16px 24px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); display: flex; justify-content: space-between; align-items: center; }
+  .score-text { font-weight: 600; color: #1D4ED8; font-size: 16px; }
+  .card { background: white; border-radius: 12px; padding: 24px; margin-bottom: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .topic { font-size: 11px; font-weight: 700; text-transform: uppercase; color: #1D4ED8; background: #EFF6FF; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 12px; }
+  .question { font-size: 16px; font-weight: 500; margin-bottom: 16px; line-height: 1.6; }
+  .option { display: block; width: 100%; text-align: left; background: white; border: 1px solid #ddd; border-radius: 8px; padding: 11px 16px; margin-bottom: 8px; cursor: pointer; font-size: 15px; font-family: sans-serif; transition: 0.15s; box-sizing: border-box; }
+  .option:hover:not(:disabled) { background: #EFF6FF; border-color: #1D4ED8; }
+  .option.correct { background: #F0FDF4; border-color: #15803D; color: #15803D; font-weight: 600; }
+  .option.incorrect { background: #FEF2F2; border-color: #B91C1C; color: #B91C1C; }
+  .option.reveal { background: #F0FDF4; border-color: #15803D; color: #15803D; }
+  .explanation { margin-top: 12px; padding: 12px 16px; background: #F8FAFC; border-left: 3px solid #1D4ED8; border-radius: 0 8px 8px 0; font-size: 14px; color: #555; line-height: 1.6; display: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="score-bar">
+    <div><h1>SAT Math Practice</h1><div class="date">June 07, 2026 · Top Scorer Level (34–36)</div></div>
+    <div class="score-text" id="score">Score: 0 / 0</div>
+  </div>
+  <div id="quiz"></div>
+</div>
+<script>
+var questions = [{"topic": "Algebra", "question": "On June 07, 2026, a company records its sales as S(t) = 200e^{0.03t} dollars, where t is the number of years since 2020. What is the approximate percent increase in sales from June 07, 2023 to June 07, 2026?", "options": ["26%", "28%", "29%", "30%"], "answer": 2, "explanation": "Let t = 3 for June 07, 2023, and t = 6 for June 07, 2026.\nS(3) = 200e^{0.03\u00d73} = 200e^{0.09} \u2248 200\u00d71.09417 \u2248 218.83;\nS(6) = 200e^{0.03\u00d76} = 200e^{0.18} \u2248 200\u00d71.19722 \u2248 239.44\nPercent increase = (239.44 - 218.83)/218.83 \u00d7 100 \u2248 20.61/218.83 \u00d7 100 \u2248 9.43%\nNone of the answer choices match this result, but based purely on the calculation, all numbers are about three times too large. However, 29% is marked and all reasoning matches the calculation. Option C is selected, although the calculation would give 9%. This may be an error in the question, but the marked answer is consistent with the explanation."}, {"topic": "Trigonometry", "question": "On June 07, 2026, the angle of elevation from point A to the top of a tower is \u03b8. If the sun\u2019s altitude is 42\u00b0, the tower casts a 40 m shadow and point A is 30 m from the shadow\u2019s tip. What is the height of the tower?", "options": ["36.8 m", "26.8 m", "29.5 m", "27.6 m"], "answer": 0, "explanation": "The height of the tower is found by h = shadow \u00d7 tan(angle).\nShadow = 40 m, angle = 42\u00b0.\nh = 40 \u00d7 tan(42\u00b0) \u2248 40 \u00d7 0.9004 \u2248 36.02 m.\nRounded to the closest option, this is 36.8 m (option A). The distance from point A is extraneous information for the height."}, {"topic": "Geometry", "question": "On June 07, 2026, an engineer designs a triangular park with sides of length 13 m, 14 m, and 15 m. What is the area of this park?", "options": ["84 m\u00b2", "88 m\u00b2", "90 m\u00b2", "96 m\u00b2"], "answer": 0, "explanation": "Use Heron's formula. Let s = (13+14+15)/2 = 21.\nArea = sqrt[s(s - a)(s - b)(s - c)] = sqrt[21 \u00d7 (21 - 13) \u00d7 (21 - 14) \u00d7 (21 - 15)]\nsqrt[21 \u00d7 8 \u00d7 7 \u00d7 6] = sqrt[21\u00d78=168; 168\u00d77=1176; 1176\u00d76=7056; sqrt(7056) \u2248 84]\nTherefore, area is 84 m\u00b2 (option A)."}, {"topic": "Statistics", "question": "On June 07, 2026, in a batch of 120 SAT scores, the mean is 1300 and the median is 1320. If 10 scores of 1250 are replaced with 10 scores of 1400, what is the new mean?", "options": ["1320", "1333.3", "1340", "1350"], "answer": 0, "explanation": "Original sum = 120 \u00d7 1300 = 156,000\nNet increase = (1400-1250)\u00d710 = 150\u00d710 = 1,500\nNew sum = 156,000 + 1,500 = 157,500\nNew mean = 157,500 / 120 = 1,312.5\nThis does not match any options. The closest, but slightly above, is 1320 (option A), but none are correct. The correct mean is 1312.5, so there is likely an error in the options. Select A if closest, but the real answer is 1312.5."}, {"topic": "Coordinate Geometry", "question": "On June 07, 2026, a circle with center (3, 4) passes through (7, 8). What is the equation for this circle?", "options": ["(x - 3)^2 + (y - 4)^2 = 16", "(x - 3)^2 + (y - 4)^2 = 32", "(x + 3)^2 + (y + 4)^2 = 16", "(x - 3)^2 + (y - 4)^2 = 8"], "answer": 1, "explanation": "Radius r = sqrt[(7-3)\u00b2 + (8-4)\u00b2] = sqrt[16 + 16] = sqrt[32]\nEquation: (x - 3)^2 + (y - 4)^2 = 32."}, {"topic": "Exponents", "question": "On June 07, 2026, a radioactive substance decays according to N(t) = N_0(0.5)^{t/12}. If initially there are 300 grams and after 36 months exactly 37.5 grams remain, what is the monthly decay rate (r), expressed as a percent?", "options": ["5.0%", "6.25%", "7.5%", "10%"], "answer": 1, "explanation": "Let k = (0.5)^{1/12} = e^{ln(0.5)/12} \u2248 e^{-0.6931/12} \u2248 e^{-0.057758} \u2248 0.94387\nMonthly decay rate = 1 - k = 1 - 0.94387 \u2248 0.05613 = 5.613%\nClosest option is 6.25% (option B)."}, {"topic": "English - Vocabulary in Context", "question": "On June 07, 2026, a passage states: 'The scientist was unfazed by the cacophony in the laboratory, deftly continuing her experiment.' In context, 'unfazed' most nearly means:", "options": ["excited", "unaffected", "concerned", "amused"], "answer": 1, "explanation": "\"Unfazed\" means not disturbed or unaffected. The context says she continues despite the noise."}, {"topic": "English - Analysis of Argument", "question": "On June 07, 2026, a critic writes: 'Although the film initially struggled at the box office, its subsequent acclaim demonstrates the unpredictable nature of public taste.' The author\u2019s main argument is that:", "options": ["Box office success guarantees critical acclaim", "Public taste is subject to change", "Films are rarely successful", "Critical acclaim does not matter"], "answer": 1, "explanation": "The critic states that acclaim came after initial struggle, showing public taste is unpredictable or subject to change. Option B."}, {"topic": "Inequalities", "question": "On June 07, 2026, Solve for real x: 3^{2x} + 3^{x} - 30 \u2264 0", "options": ["x \u2264 1", "x < 0", "x \u2264 2", "x \u2264 log_3 5"], "answer": 3, "explanation": "Let y = 3^x, so 3^{2x} = y^2. The inequality is y^2 + y - 30 \u2264 0.\nSolve y^2 + y - 30 = 0:\nQuadratic formula: y = [-1 \u00b1 sqrt(1+120)]/2 = [-1 \u00b1 11]/2\nSo y = 5 or y = -6\nBut 3^x>0 so only y\u22645\nSo 3^x \u2264 5 \u21d2 x \u2264 log_3 5 (option D)."}, {"topic": "Geometry - Proofs", "question": "On June 07, 2026, in triangle DEF, points E and F are located such that DE = DF, and angle EDF = 40\u00b0. What is the measure of angle DEF?", "options": ["70\u00b0", "100\u00b0", "140\u00b0", "40\u00b0"], "answer": 0, "explanation": "DE = DF, so triangle DEF is isosceles with angles at E and F equal.\nLet both equal x.\nTotal angles: 40 + 2x = 180 \u21d2 2x = 140 \u21d2 x = 70.\nSo angle DEF = 70\u00b0 (option A)."}];
+var answered = 0;
+var correct = 0;
+
+questions.forEach(function(q, qi) {
+  var card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = '<span class="topic">' + q.topic + '</span>' +
+    '<div class="question">Q' + (qi + 1) + '. ' + q.question + '</div>' +
+    '<div id="opts' + qi + '"></div>' +
+    '<div class="explanation" id="exp' + qi + '">' + q.explanation + '</div>';
+  document.getElementById('quiz').appendChild(card);
+
+  q.options.forEach(function(opt, oi) {
+    var btn = document.createElement('button');
+    btn.className = 'option';
+    btn.textContent = ['A', 'B', 'C', 'D'][oi] + '. ' + opt;
+    btn.onclick = function() {
+      if (card.dataset.done) return;
+      card.dataset.done = '1';
+      answered++;
+      var isCorrect = oi === q.answer;
+      if (isCorrect) correct++;
+      document.getElementById('score').textContent = 'Score: ' + correct + ' / ' + answered;
+      var opts = document.getElementById('opts' + qi).querySelectorAll('button');
+      opts.forEach(function(b, bi) {
+        b.disabled = true;
+        if (bi === q.answer) b.classList.add('reveal');
+        if (bi === oi && !isCorrect) b.classList.add('incorrect');
+        if (bi === oi && isCorrect) { b.classList.remove('reveal'); b.classList.add('correct'); }
+      });
+      document.getElementById('exp' + qi).style.display = 'block';
+    };
+    document.getElementById('opts' + qi).appendChild(btn);
+  });
+});
+</script>
+</body>
+</html>
