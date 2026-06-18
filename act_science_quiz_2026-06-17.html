@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACT Science Practice — June 17, 2026</title>
+<style>
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #f3f4f6;
+    margin: 0;
+    padding: 12px;
+}
+.container {
+    max-width: 980px;
+    margin: auto;
+}
+.score-bar {
+    background: white;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.score-text {
+    color: #2563eb;
+    font-weight: bold;
+}
+.card {
+    background: white;
+    border-radius: 6px;
+    padding: 14px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.topic {
+    display: inline-block;
+    background: #dbeafe;
+    color: #1d4ed8;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+}
+.counter, .meta {
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+.section {
+    margin-top: 10px;
+}
+.section-title {
+    font-weight: bold;
+    color: #111827;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+.section-content {
+    font-size: 14px;
+    line-height: 1.35;
+    white-space: pre-line;
+    color: #222;
+}
+.question {
+    margin-top: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 1.35;
+}
+.option {
+    width: 100%;
+    text-align: left;
+    padding: 6px 8px;
+    margin-top: 4px;
+    border: 1px solid #cfcfcf;
+    border-radius: 4px;
+    cursor: pointer;
+    background: white;
+    font-size: 14px;
+    line-height: 1.3;
+}
+.option:hover:not(:disabled) {
+    background: #eff6ff;
+}
+.option.correct {
+    background: #dcfce7;
+    border-color: #16a34a;
+}
+.option.incorrect {
+    background: #fee2e2;
+    border-color: #dc2626;
+}
+.option.reveal {
+    background: #dcfce7;
+    border-color: #16a34a;
+}
+.explanation {
+    display: none;
+    margin-top: 12px;
+    padding: 10px;
+    background: #f8fafc;
+    border-left: 4px solid #2563eb;
+    line-height: 1.35;
+    font-size: 14px;
+    white-space: pre-line;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+}
+th {
+    background: #f1f5f9;
+}
+th, td {
+    border: 1px solid #999;
+    padding: 4px 6px;
+    text-align: left;
+    font-size: 13px;
+}
+.graphviz-box {
+    background: #f8fafc;
+    padding: 10px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-top: 6px;
+}
+.graphviz-box svg {
+    max-width: 100%;
+    height: auto;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="score-bar">
+        <div>
+            <h2>ACT Science Practice</h2>
+            <div>June 17, 2026</div>
+        </div>
+        <div class="score-text" id="score">Score: 0 / 0</div>
+    </div>
+    <div id="quiz"></div>
+</div>
+
+<script type="module">
+import { instance } from "https://cdn.jsdelivr.net/npm/@viz-js/viz@3.9.0/+esm";
+
+const questions = [{"topic": "ACT Science Quiz", "mode": "data_representation", "question_type": "cross_reference", "passage": {"scenario": "A researcher measured enzyme activity at three different temperatures and three different pH levels. The results are shown below.", "table1": {"headers": ["Temperature (\u00b0C)", "pH", "Enzyme Activity (units)"], "rows": [[25, 6, 15], [25, 7, 29], [25, 8, 17], [35, 6, 23], [35, 7, 37], [35, 8, 21], [45, 6, 14], [45, 7, 30], [45, 8, 12]]}, "table2": {"headers": ["pH", "Optimal Activity Range (units)"], "rows": [[6, "12\u201323"], [7, "29\u201337"], [8, "12\u201321"]]}}, "question": "At which combination of temperature and pH was the enzyme activity both maximized and within the optimal activity range for pH 7?", "options": ["25\u00b0C, pH 7", "35\u00b0C, pH 7", "45\u00b0C, pH 7", "25\u00b0C, pH 6"], "answer": 1, "explanation": "At pH 7, the optimal activity range is 29\u201337 units. At 35\u00b0C and pH 7, enzyme activity is 37 units, which is both the maximum for pH 7 and within the optimal range. Therefore, 35\u00b0C, pH 7 is correct."}, {"topic": "ACT Science Quiz", "mode": "data_representation", "question_type": "trend", "passage": {"scenario": "Scientists examined the effect of increasing concentrations of salt on the freezing point of water.", "table1": {"headers": ["Salt Concentration (%)", "Freezing Point (\u00b0C)"], "rows": [[0, 0], [2, -1.2], [4, -2.3], [6, -3.5], [8, -5.0]]}}, "question": "Based on the data, what overall trend is observed between salt concentration and freezing point?", "options": ["As salt concentration increases, freezing point decreases.", "Freezing point remains constant regardless of salt concentration.", "As salt concentration increases, freezing point increases.", "There is no relationship between salt concentration and freezing point."], "answer": 0, "explanation": "As salt concentration goes up, the freezing point gets lower (more negative). This shows an inverse relationship: increasing salt lowers the freezing point."}, {"topic": "ACT Science Quiz", "mode": "research_summary", "question_type": "result_interpretation", "passage": {"scenario": "Students investigated how the presence of starch affects plant growth.", "experiment1": "Group A plants were watered daily and kept in sunlight. Their leaf starch content was measured after 2 weeks.", "experiment2": "Group B plants were watered daily but kept in the dark. Their leaf starch content was measured after 2 weeks.", "table1": {"headers": ["Group", "Average Leaf Starch Content (mg/g)", "Average Height (cm)"], "rows": [["A", 20, 15], ["B", 5, 7]]}}, "question": "According to the results, what can be concluded about the relationship between leaf starch content and plant height in this experiment?", "options": ["Leaf starch content has no effect on plant height.", "Leaf starch content and plant height decrease together.", "Higher leaf starch content is associated with greater plant height.", "Lower leaf starch content is associated with greater plant height."], "answer": 2, "explanation": "In the experiment, Group A had higher starch content and greater plant height, while Group B had lower starch content and shorter plants. The data indicate that higher leaf starch content is associated with greater plant height."}, {"topic": "ACT Science Quiz", "mode": "research_summary", "question_type": "prediction", "passage": {"scenario": "Scientists evaluated sugar uptake in yeast cells under different conditions.", "experiment1": "Yeast cells were grown in a glucose-rich medium at 25\u00b0C for 24 hours.", "experiment2": "Yeast cells were grown in a glucose-poor medium at 35\u00b0C for 24 hours.", "table1": {"headers": ["Medium", "Temperature (\u00b0C)", "Sugar Uptake Rate (mg/hr)"], "rows": [["Glucose-rich", 25, 8.2], ["Glucose-poor", 35, 3.1]]}}, "question": "If another group of yeast cells is grown in a glucose-rich medium at 35\u00b0C, predicting from the data, which outcome is most likely?", "options": ["Sugar uptake rate will decrease compared to 25\u00b0C in glucose-rich medium.", "Sugar uptake rate will be similar to glucose-poor medium at 35\u00b0C.", "Sugar uptake rate will be lower than both previous rates.", "Sugar uptake rate will increase compared to 25\u00b0C in glucose-rich medium."], "answer": 0, "explanation": "The existing data show the sugar uptake rate drops at higher temperature and lower glucose. If only the temperature increases (to 35\u00b0C), but the medium remains glucose-rich, the rate is likely to decrease compared to the rate at lower temperature (25\u00b0C), but will still probably be higher than the glucose-poor condition."}, {"topic": "ACT Science Quiz", "mode": "conflicting_viewpoints", "question_type": "evidence_support", "passage": {"scenario": "Two scientists debate the cause of leaf color change in autumn.", "viewpoint1": "Scientist 1 claims cooler temperatures cause chlorophyll to break down, resulting in color change.", "viewpoint2": "Scientist 2 argues decreasing sunlight, not temperature, is responsible for chlorophyll breakdown.", "table1": {"headers": ["Month", "Average Temperature (\u00b0C)", "Average Sunlight (hr/day)", "Observed Leaf Color Change"], "rows": [["August", 22, 14, "None"], ["September", 18, 12, "Slight"], ["October", 12, 10, "Significant"], ["November", 7, 8, "Complete"]]}}, "question": "According to the data table, which scientist's viewpoint is better supported by the observed pattern of leaf color change?", "options": ["Both scientists; equally supported.", "Neither scientist; no support found in the table.", "Scientist 1; correlated with temperature decrease.", "Scientist 2; correlated with sunlight decrease."], "answer": 3, "explanation": "The data show that as sunlight decreases (from 14 to 8 hours/day), the leaf color change becomes more pronounced. Although temperature also decreases, the steady reduction in sunlight aligns closely with the progression of leaf color change, supporting Scientist 2's viewpoint."}];
+let answered = 0;
+let correct = 0;
+const viz = await instance();
+
+
+function escapeHtml(value) {
+    if (value === null || value === undefined) return "";
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+}
+
+function renderTable(table) {
+    if (!table || !table.headers || !table.rows) return "";
+
+    let html = "<table>";
+    html += "<tr>";
+    table.headers.forEach(function(h) {
+        html += "<th>" + escapeHtml(h) + "</th>";
+    });
+    html += "</tr>";
+
+    table.rows.forEach(function(row) {
+        html += "<tr>";
+        row.forEach(function(cell) {
+            html += "<td>" + escapeHtml(cell) + "</td>";
+        });
+        html += "</tr>";
+    });
+
+    html += "</table>";
+    return html;
+}
+
+function sanitizeGraphviz(dot) {
+    let lines = String(dot || "")
+        .split("\n")
+        .map(line => line.trim())
+        .filter(line => line);
+
+    if (!lines.length) {
+        return [
+            "digraph G {",
+            "  rankdir=LR;",
+            '  A [label="Light"];',
+            '  B [label="Sensor"];',
+            "  A -> B;",
+            "}"
+        ].join("\n");
+    }
+
+    if (!lines[0].startsWith("digraph")) {
+        lines.unshift("digraph G {");
+        lines.push("}");
+    }
+
+    let cleaned = [];
+    let hasRankdir = false;
+    let edgeCount = 0;
+
+    for (let line of lines) {
+        line = line.replace(/[<>`]/g, "").trim();
+
+        if (line.startsWith("digraph")) {
+            cleaned.push("digraph G {");
+            continue;
+        }
+
+        if (line === "{") continue;
+        if (line === "}") continue;
+
+        if (line.startsWith("rankdir=")) {
+            hasRankdir = true;
+            cleaned.push("  rankdir=LR;");
+            continue;
+        }
+
+        if (line.includes("->")) {
+            edgeCount++;
+            if (!line.endsWith(";")) line += ";";
+            cleaned.push("  " + line);
+            continue;
+        }
+
+        if (line.includes("[label=")) {
+            if (!line.endsWith(";")) line += ";";
+            cleaned.push("  " + line);
+        }
+    }
+
+    if (!cleaned.length || cleaned[0] !== "digraph G {") {
+        cleaned.unshift("digraph G {");
+    }
+
+    if (!hasRankdir) {
+        cleaned.splice(1, 0, "  rankdir=LR;");
+    }
+
+    if (edgeCount === 0) {
+        return [
+            "digraph G {",
+            "  rankdir=LR;",
+            '  A [label="Light"];',
+            '  B [label="Sensor"];',
+            "  A -> B;",
+            "}"
+        ].join("\n");
+    }
+
+    cleaned.push("}");
+    return cleaned.join("\n");
+}
+
+function updateScore(correct, answered) {
+    document.getElementById("score").textContent =
+        "Score: " + correct + " / " + answered;
+}
+
+
+function renderGraphviz(containerId, dot) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    try {
+        const svg = viz.renderSVGElement(sanitizeGraphviz(dot));
+        container.innerHTML = "";
+        container.appendChild(svg);
+    } catch (e) {
+        container.innerHTML =
+            "<pre style='white-space:pre-wrap;color:#b91c1c'>" +
+            escapeHtml(String(e)) +
+            "</pre>";
+    }
+}
+
+questions.forEach(function(q, qi) {
+    const p = q.passage || {};
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const hasFigure =
+        p.figure1 &&
+        p.figure1.type === "graphviz" &&
+        p.figure1.content;
+
+    const sections = [];
+
+    sections.push(
+        '<div class="section"><div class="section-title">Scenario</div><div class="section-content">' +
+        escapeHtml(p.scenario || "") +
+        '</div></div>'
+    );
+
+    if (p.experiment1) {
+        sections.push(
+            '<div class="section"><div class="section-title">Experiment 1</div><div class="section-content">' +
+            escapeHtml(p.experiment1) +
+            '</div></div>'
+        );
+    }
+
+    if (p.experiment2) {
+        sections.push(
+            '<div class="section"><div class="section-title">Experiment 2</div><div class="section-content">' +
+            escapeHtml(p.experiment2) +
+            '</div></div>'
+        );
+    }
+
+    if (p.viewpoint1) {
+        sections.push(
+            '<div class="section"><div class="section-title">Viewpoint 1</div><div class="section-content">' +
+            escapeHtml(p.viewpoint1) +
+            '</div></div>'
+        );
+    }
+
+    if (p.viewpoint2) {
+        sections.push(
+            '<div class="section"><div class="section-title">Viewpoint 2</div><div class="section-content">' +
+            escapeHtml(p.viewpoint2) +
+            '</div></div>'
+        );
+    }
+
+    if (p.viewpoint3) {
+        sections.push(
+            '<div class="section"><div class="section-title">Viewpoint 3</div><div class="section-content">' +
+            escapeHtml(p.viewpoint3) +
+            '</div></div>'
+        );
+    }
+
+    if (hasFigure) {
+        sections.push(
+            '<div class="section"><div class="section-title">Figure 1</div><div class="section-content"><div class="graphviz-box"><div id="gv' + qi + '"></div></div></div></div>'
+        );
+    }
+
+    if (p.table1) {
+        sections.push(
+            '<div class="section"><div class="section-title">Table 1</div><div class="section-content">' +
+            renderTable(p.table1) +
+            '</div></div>'
+        );
+    }
+
+    if (p.table2) {
+        sections.push(
+            '<div class="section"><div class="section-title">Table 2</div><div class="section-content">' +
+            renderTable(p.table2) +
+            '</div></div>'
+        );
+    }
+
+    card.innerHTML =
+        '<div class="topic">' + escapeHtml(q.topic) + '</div>' +
+        '<div class="meta">Question ' + (qi + 1) + ' of ' + questions.length + ' · ' + escapeHtml(q.mode) + '</div>' +
+        sections.join("") +
+        '<div class="question">' + escapeHtml(q.question) + '</div>' +
+        '<div id="opts' + qi + '"></div>' +
+        '<div class="explanation" id="exp' + qi + '">' + escapeHtml(q.explanation) + '</div>';
+
+    document.getElementById("quiz").appendChild(card);
+
+    q.options.forEach(function(opt, oi) {
+        const btn = document.createElement("button");
+        btn.className = "option";
+        btn.textContent = ["A", "B", "C", "D"][oi] + ". " + opt;
+
+        btn.onclick = function() {
+            if (card.dataset.done) return;
+
+            card.dataset.done = "1";
+            answered++;
+
+            const isCorrect = (oi === q.answer);
+            if (isCorrect) correct++;
+
+            updateScore(correct, answered);
+
+            const buttons = document
+                .getElementById("opts" + qi)
+                .querySelectorAll("button");
+
+            buttons.forEach(function(b, bi) {
+                b.disabled = true;
+
+                if (bi === q.answer) b.classList.add("reveal");
+                if (bi === oi && !isCorrect) b.classList.add("incorrect");
+                if (bi === oi && isCorrect) {
+                    b.classList.remove("reveal");
+                    b.classList.add("correct");
+                }
+            });
+
+            document.getElementById("exp" + qi).style.display = "block";
+        };
+
+        document.getElementById("opts" + qi).appendChild(btn);
+    });
+
+    if (hasFigure) {
+        renderGraphviz("gv" + qi, p.figure1.content);
+    }
+});
+</script>
+</body>
+</html>
