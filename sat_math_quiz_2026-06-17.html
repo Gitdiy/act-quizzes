@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAT Math Practice — June 17, 2026</title>
+<style>
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #f3f4f6;
+    margin: 0;
+    padding: 12px;
+}
+.container {
+    max-width: 980px;
+    margin: auto;
+}
+.score-bar {
+    background: white;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.score-text {
+    color: #2563eb;
+    font-weight: bold;
+}
+.card {
+    background: white;
+    border-radius: 6px;
+    padding: 14px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.topic {
+    display: inline-block;
+    background: #dbeafe;
+    color: #1d4ed8;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+}
+.counter, .meta {
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+.section {
+    margin-top: 10px;
+}
+.section-title {
+    font-weight: bold;
+    color: #111827;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+.section-content {
+    font-size: 14px;
+    line-height: 1.35;
+    white-space: pre-line;
+    color: #222;
+}
+.question {
+    margin-top: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 1.35;
+}
+.option {
+    width: 100%;
+    text-align: left;
+    padding: 6px 8px;
+    margin-top: 4px;
+    border: 1px solid #cfcfcf;
+    border-radius: 4px;
+    cursor: pointer;
+    background: white;
+    font-size: 14px;
+    line-height: 1.3;
+}
+.option:hover:not(:disabled) {
+    background: #eff6ff;
+}
+.option.correct {
+    background: #dcfce7;
+    border-color: #16a34a;
+}
+.option.incorrect {
+    background: #fee2e2;
+    border-color: #dc2626;
+}
+.option.reveal {
+    background: #dcfce7;
+    border-color: #16a34a;
+}
+.explanation {
+    display: none;
+    margin-top: 12px;
+    padding: 10px;
+    background: #f8fafc;
+    border-left: 4px solid #2563eb;
+    line-height: 1.35;
+    font-size: 14px;
+    white-space: pre-line;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+}
+th {
+    background: #f1f5f9;
+}
+th, td {
+    border: 1px solid #999;
+    padding: 4px 6px;
+    text-align: left;
+    font-size: 13px;
+}
+.graphviz-box {
+    background: #f8fafc;
+    padding: 10px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-top: 6px;
+}
+.graphviz-box svg {
+    max-width: 100%;
+    height: auto;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="score-bar">
+        <div>
+            <h2>SAT Math Practice</h2>
+            <div>June 17, 2026</div>
+        </div>
+        <div class="score-text" id="score">Score: 0 / 0</div>
+    </div>
+    <div id="quiz"></div>
+</div>
+
+<script>
+const questions = [{"topic": "SAT Math", "skill": "quadratics", "difficulty": "hard", "question": "If x^2 + 5x - 14 = 0, what is the sum of all integer values of x?", "correct_answer_text": "-5", "options": ["-5", "14", "-9", "5"], "answer": 0, "explanation": "The equation x^2 + 5x - 14 = 0 can be factored as (x + 7)(x - 2) = 0, so the integer roots are x = -7 and x = 2. The sum is -7 + 2 = -5."}, {"topic": "SAT Math", "skill": "functions", "difficulty": "hard", "question": "If f(x) = 3x^2 - 2x + 4 and f(a) = f(-a), what is the value of a?", "correct_answer_text": "0", "options": ["2", "1", "-2", "0"], "answer": 3, "explanation": "Set f(a) = f(-a): 3a^2 - 2a + 4 = 3a^2 + 2a + 4. Subtract 3a^2 + 4 from both sides: -2a = 2a \u2192 -2a - 2a = 0 \u2192 -4a = 0 \u2192 a = 0."}, {"topic": "SAT Math", "skill": "geometry", "difficulty": "hard", "question": "A rectangle has a perimeter of 40 units and its length is twice its width. What is the area of the rectangle?", "correct_answer_text": "800/9", "options": ["800/9", "100", "120", "90"], "answer": 0, "explanation": "Let width = w; length = 2w. Perimeter: 2w + 2(2w) = 40 \u2192 2w + 4w = 40 \u2192 6w = 40 \u2192 w = 20/3. Length = 40/3. Area = w \u00d7 length = (20/3) \u00d7 (40/3) = 800/9."}, {"topic": "SAT Math", "skill": "exponents", "difficulty": "hard", "question": "If 3^x = 81, what is the value of x?", "correct_answer_text": "4", "options": ["3", "2", "4", "5"], "answer": 2, "explanation": "Since 81 = 3^4, the value of x is 4."}, {"topic": "SAT Math", "skill": "statistics", "difficulty": "hard", "question": "A set consists of the numbers 5, 8, 10, and k. The mean of the set is 9. What is the value of k?", "correct_answer_text": "13", "options": ["14", "13", "12", "11"], "answer": 1, "explanation": "(5+8+10+k)/4 = 9 \u2192 23 + k = 36 \u2192 k = 13."}];
+let answered = 0;
+let correct = 0;
+
+
+function escapeHtml(value) {
+    if (value === null || value === undefined) return "";
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+}
+
+function renderTable(table) {
+    if (!table || !table.headers || !table.rows) return "";
+
+    let html = "<table>";
+    html += "<tr>";
+    table.headers.forEach(function(h) {
+        html += "<th>" + escapeHtml(h) + "</th>";
+    });
+    html += "</tr>";
+
+    table.rows.forEach(function(row) {
+        html += "<tr>";
+        row.forEach(function(cell) {
+            html += "<td>" + escapeHtml(cell) + "</td>";
+        });
+        html += "</tr>";
+    });
+
+    html += "</table>";
+    return html;
+}
+
+function sanitizeGraphviz(dot) {
+    let lines = String(dot || "")
+        .split("\n")
+        .map(line => line.trim())
+        .filter(line => line);
+
+    if (!lines.length) {
+        return [
+            "digraph G {",
+            "  rankdir=LR;",
+            '  A [label="Light"];',
+            '  B [label="Sensor"];',
+            "  A -> B;",
+            "}"
+        ].join("\n");
+    }
+
+    if (!lines[0].startsWith("digraph")) {
+        lines.unshift("digraph G {");
+        lines.push("}");
+    }
+
+    let cleaned = [];
+    let hasRankdir = false;
+    let edgeCount = 0;
+
+    for (let line of lines) {
+        line = line.replace(/[<>`]/g, "").trim();
+
+        if (line.startsWith("digraph")) {
+            cleaned.push("digraph G {");
+            continue;
+        }
+
+        if (line === "{") continue;
+        if (line === "}") continue;
+
+        if (line.startsWith("rankdir=")) {
+            hasRankdir = true;
+            cleaned.push("  rankdir=LR;");
+            continue;
+        }
+
+        if (line.includes("->")) {
+            edgeCount++;
+            if (!line.endsWith(";")) line += ";";
+            cleaned.push("  " + line);
+            continue;
+        }
+
+        if (line.includes("[label=")) {
+            if (!line.endsWith(";")) line += ";";
+            cleaned.push("  " + line);
+        }
+    }
+
+    if (!cleaned.length || cleaned[0] !== "digraph G {") {
+        cleaned.unshift("digraph G {");
+    }
+
+    if (!hasRankdir) {
+        cleaned.splice(1, 0, "  rankdir=LR;");
+    }
+
+    if (edgeCount === 0) {
+        return [
+            "digraph G {",
+            "  rankdir=LR;",
+            '  A [label="Light"];',
+            '  B [label="Sensor"];',
+            "  A -> B;",
+            "}"
+        ].join("\n");
+    }
+
+    cleaned.push("}");
+    return cleaned.join("\n");
+}
+
+function updateScore(correct, answered) {
+    document.getElementById("score").textContent =
+        "Score: " + correct + " / " + answered;
+}
+
+
+questions.forEach(function(q, qi) {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML =
+        '<div class="topic">' + escapeHtml(q.topic) + '</div>' +
+        '<div class="meta">Question ' + (qi + 1) + ' of ' + questions.length + ' · ' + escapeHtml(q.skill) + ' · ' + escapeHtml(q.difficulty) + '</div>' +
+        '<div class="question">' + escapeHtml(q.question) + '</div>' +
+        '<div id="opts' + qi + '"></div>' +
+        '<div class="explanation" id="exp' + qi + '">' + escapeHtml(q.explanation) + '</div>';
+
+    document.getElementById("quiz").appendChild(card);
+
+    q.options.forEach(function(opt, oi) {
+        const btn = document.createElement("button");
+        btn.className = "option";
+        btn.textContent = ["A", "B", "C", "D"][oi] + ". " + opt;
+
+        btn.onclick = function() {
+            if (card.dataset.done) return;
+
+            card.dataset.done = "1";
+            answered++;
+
+            const isCorrect = (oi === q.answer);
+            if (isCorrect) correct++;
+
+            updateScore(correct, answered);
+
+            const buttons = document
+                .getElementById("opts" + qi)
+                .querySelectorAll("button");
+
+            buttons.forEach(function(b, bi) {
+                b.disabled = true;
+
+                if (bi === q.answer) b.classList.add("reveal");
+                if (bi === oi && !isCorrect) b.classList.add("incorrect");
+                if (bi === oi && isCorrect) {
+                    b.classList.remove("reveal");
+                    b.classList.add("correct");
+                }
+            });
+
+            document.getElementById("exp" + qi).style.display = "block";
+        };
+
+        document.getElementById("opts" + qi).appendChild(btn);
+    });
+});
+</script>
+</body>
+</html>
