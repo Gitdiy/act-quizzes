@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAT Math Practice — July 25, 2026</title>
+<style>
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #f3f4f6;
+    margin: 0;
+    padding: 12px;
+}
+.container {
+    max-width: 980px;
+    margin: auto;
+}
+.score-bar {
+    background: white;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.score-text {
+    color: #2563eb;
+    font-weight: bold;
+}
+.card {
+    background: white;
+    border-radius: 6px;
+    padding: 14px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.topic {
+    display: inline-block;
+    background: #dbeafe;
+    color: #1d4ed8;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+}
+.counter, .meta {
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+.section {
+    margin-top: 10px;
+}
+.section-title {
+    font-weight: bold;
+    color: #111827;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+.section-content {
+    font-size: 14px;
+    line-height: 1.35;
+    white-space: pre-line;
+    color: #222;
+}
+.question {
+    margin-top: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 1.35;
+}
+.option {
+    width: 100%;
+    text-align: left;
+    padding: 6px 8px;
+    margin-top: 4px;
+    border: 1px solid #cfcfcf;
+    border-radius: 4px;
+    cursor: pointer;
+    background: white;
+    font-size: 14px;
+    line-height: 1.3;
+}
+.option:hover:not(:disabled) {
+    background: #eff6ff;
+}
+.option.correct {
+    background: #dcfce7;
+    border-color: #16a34a;
+}
+.option.incorrect {
+    background: #fee2e2;
+    border-color: #dc2626;
+}
+.option.reveal {
+    background: #dcfce7;
+    border-color: #16a34a;
+}
+.explanation {
+    display: none;
+    margin-top: 12px;
+    padding: 10px;
+    background: #f8fafc;
+    border-left: 4px solid #2563eb;
+    line-height: 1.35;
+    font-size: 14px;
+    white-space: pre-line;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+}
+th {
+    background: #f1f5f9;
+}
+th, td {
+    border: 1px solid #999;
+    padding: 4px 6px;
+    text-align: left;
+    font-size: 13px;
+}
+.graphviz-box {
+    background: #f8fafc;
+    padding: 10px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-top: 6px;
+}
+.graphviz-box svg {
+    max-width: 100%;
+    height: auto;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="score-bar">
+        <div>
+            <h2>SAT Math Practice</h2>
+            <div>July 25, 2026</div>
+        </div>
+        <div class="score-text" id="score">Score: 0 / 0</div>
+    </div>
+    <div id="quiz"></div>
+</div>
+
+<script>
+const questions = [{"topic": "SAT Math", "skill": "probability", "difficulty": "hard", "question": "A bag contains 4 red, 5 blue, and 6 green marbles. If 3 marbles are drawn at random without replacement, what is the probability that all three are different colors?", "correct_answer_text": "24/91", "options": ["5/42", "20/91", "60/273", "24/91"], "answer": 3, "explanation": "Number of ways to pick one of each color: 4 (red) * 5 (blue) * 6 (green) = 120. The number of ways to choose any 3 marbles: 15C3 = 455. Probability = 120/455 = 24/91 after simplifying. So the correct answer is 24/91."}, {"topic": "SAT Math", "skill": "probability", "difficulty": "hard", "question": "A fair coin is flipped 5 times. What is the probability that exactly 3 heads appear?", "correct_answer_text": "5/16", "options": ["10/32", "5/16", "3/8", "1/2"], "answer": 1, "explanation": "Number of ways to get 3 heads out of 5: 5C3 = 10. Total outcomes: 2^5 = 32. Probability: 10/32 = 5/16."}, {"topic": "SAT Math", "skill": "probability", "difficulty": "hard", "question": "Two numbers are chosen at random and without replacement from the set {1, 2, 3, 4, 5}. What is the probability that their sum is even?", "correct_answer_text": "2/5", "options": ["2/5", "1/2", "3/10", "1/5"], "answer": 0, "explanation": "Even sum occurs when both are odd or both are even. Odd numbers: 3 (1,3,5); ways: 3C2=3. Even numbers: 2 (2,4); ways: 2C2=1. Total ways for even sum: 3+1=4. Total pairs: 5C2=10. Probability: 4/10 = 2/5."}, {"topic": "SAT Math", "skill": "probability", "difficulty": "hard", "question": "A box contains 8 black and 4 white balls. If 2 balls are drawn at random without replacement, what is the probability that both are black?", "correct_answer_text": "14/33", "options": ["7/22", "16/66", "14/33", "8/33"], "answer": 2, "explanation": "Ways to draw 2 black balls: 8C2 = 28. Total ways to draw any 2 balls: 12C2 = 66. Probability = 28/66 = 14/33."}, {"topic": "SAT Math", "skill": "probability", "difficulty": "hard", "question": "In a standard deck of 52 cards, what is the probability that a card drawn at random is either a spade or a face card (jack, queen, or king)?", "correct_answer_text": "11/26", "options": ["11/26", "19/52", "22/52", "13/52"], "answer": 0, "explanation": "There are 13 spades, 12 face cards. But 3 cards are both (jack, queen, king of spades). So: 13 + 12 - 3 = 22. Probability = 22/52 = 11/26."}];
+let answered = 0;
+let correct = 0;
+
+
+function escapeHtml(value) {
+    if (value === null || value === undefined) return "";
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+}
+
+function renderTable(table) {
+    if (!table || !table.headers || !table.rows) return "";
+
+    let html = "<table>";
+    html += "<tr>";
+    table.headers.forEach(function(h) {
+        html += "<th>" + escapeHtml(h) + "</th>";
+    });
+    html += "</tr>";
+
+    table.rows.forEach(function(row) {
+        html += "<tr>";
+        row.forEach(function(cell) {
+            html += "<td>" + escapeHtml(cell) + "</td>";
+        });
+        html += "</tr>";
+    });
+
+    html += "</table>";
+    return html;
+}
+
+function sanitizeGraphviz(dot) {
+    let lines = String(dot || "")
+        .split("\n")
+        .map(line => line.trim())
+        .filter(line => line);
+
+    if (!lines.length) {
+        return [
+            "digraph G {",
+            "  rankdir=LR;",
+            '  A [label="Light"];',
+            '  B [label="Sensor"];',
+            "  A -> B;",
+            "}"
+        ].join("\n");
+    }
+
+    if (!lines[0].startsWith("digraph")) {
+        lines.unshift("digraph G {");
+        lines.push("}");
+    }
+
+    let cleaned = [];
+    let hasRankdir = false;
+    let edgeCount = 0;
+
+    for (let line of lines) {
+        line = line.replace(/[<>`]/g, "").trim();
+
+        if (line.startsWith("digraph")) {
+            cleaned.push("digraph G {");
+            continue;
+        }
+
+        if (line === "{") continue;
+        if (line === "}") continue;
+
+        if (line.startsWith("rankdir=")) {
+            hasRankdir = true;
+            cleaned.push("  rankdir=LR;");
+            continue;
+        }
+
+        if (line.includes("->")) {
+            edgeCount++;
+            if (!line.endsWith(";")) line += ";";
+            cleaned.push("  " + line);
+            continue;
+        }
+
+        if (line.includes("[label=")) {
+            if (!line.endsWith(";")) line += ";";
+            cleaned.push("  " + line);
+        }
+    }
+
+    if (!cleaned.length || cleaned[0] !== "digraph G {") {
+        cleaned.unshift("digraph G {");
+    }
+
+    if (!hasRankdir) {
+        cleaned.splice(1, 0, "  rankdir=LR;");
+    }
+
+    if (edgeCount === 0) {
+        return [
+            "digraph G {",
+            "  rankdir=LR;",
+            '  A [label="Light"];',
+            '  B [label="Sensor"];',
+            "  A -> B;",
+            "}"
+        ].join("\n");
+    }
+
+    cleaned.push("}");
+    return cleaned.join("\n");
+}
+
+function updateScore(correct, answered) {
+    document.getElementById("score").textContent =
+        "Score: " + correct + " / " + answered;
+}
+
+
+questions.forEach(function(q, qi) {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML =
+        '<div class="topic">' + escapeHtml(q.topic) + '</div>' +
+        '<div class="meta">Question ' + (qi + 1) + ' of ' + questions.length + ' · ' + escapeHtml(q.skill) + ' · ' + escapeHtml(q.difficulty) + '</div>' +
+        '<div class="question">' + escapeHtml(q.question) + '</div>' +
+        '<div id="opts' + qi + '"></div>' +
+        '<div class="explanation" id="exp' + qi + '">' + escapeHtml(q.explanation) + '</div>';
+
+    document.getElementById("quiz").appendChild(card);
+
+    q.options.forEach(function(opt, oi) {
+        const btn = document.createElement("button");
+        btn.className = "option";
+        btn.textContent = ["A", "B", "C", "D"][oi] + ". " + opt;
+
+        btn.onclick = function() {
+            if (card.dataset.done) return;
+
+            card.dataset.done = "1";
+            answered++;
+
+            const isCorrect = (oi === q.answer);
+            if (isCorrect) correct++;
+
+            updateScore(correct, answered);
+
+            const buttons = document
+                .getElementById("opts" + qi)
+                .querySelectorAll("button");
+
+            buttons.forEach(function(b, bi) {
+                b.disabled = true;
+
+                if (bi === q.answer) b.classList.add("reveal");
+                if (bi === oi && !isCorrect) b.classList.add("incorrect");
+                if (bi === oi && isCorrect) {
+                    b.classList.remove("reveal");
+                    b.classList.add("correct");
+                }
+            });
+
+            document.getElementById("exp" + qi).style.display = "block";
+        };
+
+        document.getElementById("opts" + qi).appendChild(btn);
+    });
+});
+</script>
+</body>
+</html>
