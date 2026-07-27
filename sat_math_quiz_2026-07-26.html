@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAT Math Practice — July 26, 2026</title>
+<style>
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #f3f4f6;
+    margin: 0;
+    padding: 12px;
+}
+.container {
+    max-width: 980px;
+    margin: auto;
+}
+.score-bar {
+    background: white;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.score-text {
+    color: #2563eb;
+    font-weight: bold;
+}
+.card {
+    background: white;
+    border-radius: 6px;
+    padding: 14px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.topic {
+    display: inline-block;
+    background: #dbeafe;
+    color: #1d4ed8;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+}
+.counter, .meta {
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+.section {
+    margin-top: 10px;
+}
+.section-title {
+    font-weight: bold;
+    color: #111827;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+.section-content {
+    font-size: 14px;
+    line-height: 1.35;
+    white-space: pre-line;
+    color: #222;
+}
+.question {
+    margin-top: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 1.35;
+}
+.option {
+    width: 100%;
+    text-align: left;
+    padding: 6px 8px;
+    margin-top: 4px;
+    border: 1px solid #cfcfcf;
+    border-radius: 4px;
+    cursor: pointer;
+    background: white;
+    font-size: 14px;
+    line-height: 1.3;
+}
+.option:hover:not(:disabled) {
+    background: #eff6ff;
+}
+.option.correct {
+    background: #dcfce7;
+    border-color: #16a34a;
+}
+.option.incorrect {
+    background: #fee2e2;
+    border-color: #dc2626;
+}
+.option.reveal {
+    background: #dcfce7;
+    border-color: #16a34a;
+}
+.explanation {
+    display: none;
+    margin-top: 12px;
+    padding: 10px;
+    background: #f8fafc;
+    border-left: 4px solid #2563eb;
+    line-height: 1.35;
+    font-size: 14px;
+    white-space: pre-line;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+}
+th {
+    background: #f1f5f9;
+}
+th, td {
+    border: 1px solid #999;
+    padding: 4px 6px;
+    text-align: left;
+    font-size: 13px;
+}
+.graphviz-box {
+    background: #f8fafc;
+    padding: 10px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-top: 6px;
+}
+.graphviz-box svg {
+    max-width: 100%;
+    height: auto;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="score-bar">
+        <div>
+            <h2>SAT Math Practice</h2>
+            <div>July 26, 2026</div>
+        </div>
+        <div class="score-text" id="score">Score: 0 / 0</div>
+    </div>
+    <div id="quiz"></div>
+</div>
+
+<script>
+const questions = [{"topic": "SAT Math", "skill": "probability", "difficulty": "medium", "question": "A student randomly selects a password that is 3 characters long. Each character can be a digit (0\u20139) or one of two letters (A, B). What is the probability that all three characters are different?", "correct_answer_text": "55/72", "options": ["6/13", "4/15", "7/18", "55/72"], "answer": 3, "explanation": "There are 10 digits + 2 letters = 12 possible characters for each position. Total number of possible passwords = 12^3 = 1728. To have all three characters different: First character: 12 choices; second: 11 choices; third: 10 choices. So, number of passwords with all different characters = 12*11*10 = 1320. Probability = 1320/1728 = 55/72 after simplifying."}, {"topic": "SAT Math", "skill": "probability", "difficulty": "medium", "question": "A survey of 60 people found that 25 ride bikes, 20 ride buses, and 7 do both. What is the probability that a randomly selected person rides at least one (bike or bus)?", "correct_answer_text": "19/30", "options": ["19/30", "13/15", "2/3", "3/4"], "answer": 0, "explanation": "By the inclusion-exclusion principle: number who ride at least one = 25 + 20 \u2013 7 = 38. Probability = 38/60 = 19/30."}, {"topic": "SAT Math", "skill": "probability", "difficulty": "medium", "question": "A basketball player has made 70 out of 100 free throws. If the next 3 free throws are independent and the player's probability of making any single free throw is equal to her historical average, what is the probability she makes ALL THREE?", "correct_answer_text": "0.343", "options": ["0.27", "0.49", "0.343", "0.7"], "answer": 2, "explanation": "Her historical average is 70/100 = 0.7. Probability of making all three = 0.7 \u00d7 0.7 \u00d7 0.7 = 0.343."}, {"topic": "SAT Math", "skill": "statistics", "difficulty": "medium", "question": "A quality control chart for a factory shows that out of 1000 widgets produced, 40 were defective. If the next batch contains 500 widgets, what is the expected number of defective widgets?", "correct_answer_text": "20", "options": ["20", "15", "10", "25"], "answer": 0, "explanation": "The probability that a widget is defective is 40/1000 = 0.04. Expected number of defectives in 500 widgets = 0.04 \u00d7 500 = 20."}, {"topic": "SAT Math", "skill": "statistics", "difficulty": "medium", "question": "A medical study found that among 200 tested patients, 60 had high blood pressure, 30 had high cholesterol, and 15 had both. What is the probability that a randomly selected patient from the study had high blood pressure OR high cholesterol?", "correct_answer_text": "75/200", "options": ["2/3", "1/2", "75/200", "3/5"], "answer": 2, "explanation": "Number with at least one condition = 60 + 30 \u2013 15 = 75. Total patients = 200. So probability = 75/200. (If you wish to simplify the fraction, 75/200 = 3/8, but 75/200 is most accurate and present in the options.)"}, {"topic": "SAT Math", "skill": "probability", "difficulty": "medium", "question": "Three school clubs have 8, 6, and 7 members respectively. If one student is randomly selected from all three clubs combined, what is the probability that the student is from the club with 6 members?", "correct_answer_text": "2/7", "options": ["3/7", "2/7", "1/3", "1/2"], "answer": 1, "explanation": "Total members = 8 + 6 + 7 = 21. Probability student is from the club with 6 members = 6/21 = 2/7."}, {"topic": "SAT Math", "skill": "probability", "difficulty": "medium", "question": "A school has 20 students in math club, 15 in science club, and 10 in both clubs. If a student is randomly selected from those who belong to at least one club, what is the probability that the student is only in the math club?", "correct_answer_text": "2/5", "options": ["2/5", "1/3", "3/7", "1/5"], "answer": 0, "explanation": "Number only in math club = 20 - 10 = 10. Number only in science club = 15 - 10 = 5. Number in both = 10. Total in at least one club = 10 + 5 + 10 = 25. Probability only math club = 10/25 = 2/5."}, {"topic": "SAT Math", "skill": "probability", "difficulty": "medium", "question": "A spinner has three equal sectors labeled A, B, and C. If the spinner is spun twice, what is the probability that exactly one spin lands on B?", "correct_answer_text": "4/9", "options": ["1/3", "4/9", "2/9", "1/6"], "answer": 1, "explanation": "There are a total of 3*3 = 9 possible outcomes for two spins. The favorable cases: First spin is B, second is A or C (2 outcomes), or first spin is A or C (2 outcomes), second is B. Total = 2 + 2 = 4. Probability = 4/9."}, {"topic": "SAT Math", "skill": "probability", "difficulty": "medium", "question": "A card is drawn from a standard deck and replaced. Then a second card is drawn. What is the probability that BOTH cards are aces?", "correct_answer_text": "1/169", "options": ["2/169", "1/169", "1/26", "1/52"], "answer": 1, "explanation": "Probability first card is an ace: 4/52 = 1/13. Since replacement, the second card is also 1/13. Probability for both = 1/13 \u00d7 1/13 = 1/169."}, {"topic": "SAT Math", "skill": "probability", "difficulty": "medium", "question": "A weather forecaster says there is a 50% chance of rain each day. What is the probability it rains on exactly two out of three consecutive days?", "correct_answer_text": "3/8", "options": ["1/2", "1/8", "1/4", "3/8"], "answer": 3, "explanation": "There are C(3,2) = 3 ways two days out of three can be rainy. Probability for each configuration = (0.5)^2 \u00d7 (0.5)^1 = 0.125. Total probability = 3 \u00d7 0.125 = 0.375 = 3/8."}];
+let answered = 0;
+let correct = 0;
+
+
+function escapeHtml(value) {
+    if (value === null || value === undefined) return "";
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+}
+
+function renderTable(table) {
+    if (!table || !table.headers || !table.rows) return "";
+
+    let html = "<table>";
+    html += "<tr>";
+    table.headers.forEach(function(h) {
+        html += "<th>" + escapeHtml(h) + "</th>";
+    });
+    html += "</tr>";
+
+    table.rows.forEach(function(row) {
+        html += "<tr>";
+        row.forEach(function(cell) {
+            html += "<td>" + escapeHtml(cell) + "</td>";
+        });
+        html += "</tr>";
+    });
+
+    html += "</table>";
+    return html;
+}
+
+function sanitizeGraphviz(dot) {
+    let lines = String(dot || "")
+        .split("\n")
+        .map(line => line.trim())
+        .filter(line => line);
+
+    if (!lines.length) {
+        return [
+            "digraph G {",
+            "  rankdir=LR;",
+            '  A [label="Light"];',
+            '  B [label="Sensor"];',
+            "  A -> B;",
+            "}"
+        ].join("\n");
+    }
+
+    if (!lines[0].startsWith("digraph")) {
+        lines.unshift("digraph G {");
+        lines.push("}");
+    }
+
+    let cleaned = [];
+    let hasRankdir = false;
+    let edgeCount = 0;
+
+    for (let line of lines) {
+        line = line.replace(/[<>`]/g, "").trim();
+
+        if (line.startsWith("digraph")) {
+            cleaned.push("digraph G {");
+            continue;
+        }
+
+        if (line === "{") continue;
+        if (line === "}") continue;
+
+        if (line.startsWith("rankdir=")) {
+            hasRankdir = true;
+            cleaned.push("  rankdir=LR;");
+            continue;
+        }
+
+        if (line.includes("->")) {
+            edgeCount++;
+            if (!line.endsWith(";")) line += ";";
+            cleaned.push("  " + line);
+            continue;
+        }
+
+        if (line.includes("[label=")) {
+            if (!line.endsWith(";")) line += ";";
+            cleaned.push("  " + line);
+        }
+    }
+
+    if (!cleaned.length || cleaned[0] !== "digraph G {") {
+        cleaned.unshift("digraph G {");
+    }
+
+    if (!hasRankdir) {
+        cleaned.splice(1, 0, "  rankdir=LR;");
+    }
+
+    if (edgeCount === 0) {
+        return [
+            "digraph G {",
+            "  rankdir=LR;",
+            '  A [label="Light"];',
+            '  B [label="Sensor"];',
+            "  A -> B;",
+            "}"
+        ].join("\n");
+    }
+
+    cleaned.push("}");
+    return cleaned.join("\n");
+}
+
+function updateScore(correct, answered) {
+    document.getElementById("score").textContent =
+        "Score: " + correct + " / " + answered;
+}
+
+
+questions.forEach(function(q, qi) {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML =
+        '<div class="topic">' + escapeHtml(q.topic) + '</div>' +
+        '<div class="meta">Question ' + (qi + 1) + ' of ' + questions.length + ' · ' + escapeHtml(q.skill) + ' · ' + escapeHtml(q.difficulty) + '</div>' +
+        '<div class="question">' + escapeHtml(q.question) + '</div>' +
+        '<div id="opts' + qi + '"></div>' +
+        '<div class="explanation" id="exp' + qi + '">' + escapeHtml(q.explanation) + '</div>';
+
+    document.getElementById("quiz").appendChild(card);
+
+    q.options.forEach(function(opt, oi) {
+        const btn = document.createElement("button");
+        btn.className = "option";
+        btn.textContent = ["A", "B", "C", "D"][oi] + ". " + opt;
+
+        btn.onclick = function() {
+            if (card.dataset.done) return;
+
+            card.dataset.done = "1";
+            answered++;
+
+            const isCorrect = (oi === q.answer);
+            if (isCorrect) correct++;
+
+            updateScore(correct, answered);
+
+            const buttons = document
+                .getElementById("opts" + qi)
+                .querySelectorAll("button");
+
+            buttons.forEach(function(b, bi) {
+                b.disabled = true;
+
+                if (bi === q.answer) b.classList.add("reveal");
+                if (bi === oi && !isCorrect) b.classList.add("incorrect");
+                if (bi === oi && isCorrect) {
+                    b.classList.remove("reveal");
+                    b.classList.add("correct");
+                }
+            });
+
+            document.getElementById("exp" + qi).style.display = "block";
+        };
+
+        document.getElementById("opts" + qi).appendChild(btn);
+    });
+});
+</script>
+</body>
+</html>
